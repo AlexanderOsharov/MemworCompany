@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">PizzaPlanet</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="customer">Заказчик</string>
+    <string name="supplier">Доставщик</string>
+    <string name="basket">Корзина</string>
+    <string name="settings">Настройки</string>
+    <string name="profile">Профиль</string>
+
+
+    // tutorial_headings
+    <string name="first_slide_heading">Приветствуем в PizzaPlanet!</string>
+    <string name="second_slide_heading">Заказчик и доставщик!</string>
+    <string name="third_slide_heading">Только в проверенном месте!</string>
+    <string name="fourth_slide_heading">Приятного аппетита!</string>
+
+    // slides_descriptions
+    <string name="first_slide_description">Доставим пиццу в любое место и в любое время!</string>
+    <string name="second_slide_description">Вы можете съесть очень вкусную пиццу, а можете - подзаработать!</string>
+    <string name="third_slide_description">Мы доставляем пиццу только из ближайших ресторанов!</string>
+    <string name="fourth_slide_description">Надеемся, что Вам понравится наше приложение!</string>
+</resources>
