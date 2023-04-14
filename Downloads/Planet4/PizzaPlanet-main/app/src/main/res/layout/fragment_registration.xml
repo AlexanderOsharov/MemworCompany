@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/registration_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:inputType="text"
+        android:text="Имя"
+        android:textColor="@color/colorText"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/colorEdit"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp" />
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="125dp"
+        android:text="Телефон"
+        android:textColor="@color/colorText"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/editPhone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="155dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/colorEdit"
+        android:hint="  +7 ("
+        android:inputType="phone"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="  +7 (" />
+
+    <TextView
+        android:id="@+id/mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="225dp"
+        android:text="E-mail"
+        android:textColor="@color/colorText"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/editMail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="255dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/colorEdit"
+        android:inputType="textEmailAddress"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp" />
+
+    <TextView
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="325dp"
+        android:text="Пароль"
+        android:textColor="@color/colorText"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/editPass"
+        android:layout_width="370dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="355dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/colorEdit"
+        android:inputType="textPassword"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp" />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="445dp"
+        android:background="@drawable/button_shape"
+        android:text="Продолжить"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+</RelativeLayout>

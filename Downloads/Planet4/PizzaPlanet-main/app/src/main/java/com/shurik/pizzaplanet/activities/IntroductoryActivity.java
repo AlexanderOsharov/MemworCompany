@@ -1,4 +1,4 @@
-package com.shurik.pizzaplanet;
+package com.shurik.pizzaplanet.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import com.shurik.pizzaplanet.R;
 import com.shurik.pizzaplanet.databinding.ActivityIntroductoryBinding;
 
 public class IntroductoryActivity extends AppCompatActivity {
@@ -32,14 +33,16 @@ public class IntroductoryActivity extends AppCompatActivity {
         finish();
     }
 
+    // класс потока
     class MyThread implements Runnable {
-
         @Override
         public void run() {
             try {
                 Thread.sleep(600);
-            } catch (InterruptedException ignored) {}
-            transition();
+            } catch (InterruptedException ignored) {
+            }
+            transition(); // метод перехода на новую активность
         }
     }
+
 }

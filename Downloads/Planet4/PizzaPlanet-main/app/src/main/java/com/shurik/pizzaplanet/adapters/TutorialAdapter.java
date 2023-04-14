@@ -14,10 +14,11 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.shurik.pizzaplanet.R;
 
-// viewPager для tutorialActivity
-public class ViewPagerAdapter extends PagerAdapter {
+// Adapter для tutorialActivity
+public class TutorialAdapter extends PagerAdapter {
 
-    Context context;
+    // контекст
+    private Context context;
 
     // изобржения
     int[] images = {
@@ -44,7 +45,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     };
 
 
-    public ViewPagerAdapter(Context context) {
+    public TutorialAdapter(Context context) {
         this.context = context;
     }
 

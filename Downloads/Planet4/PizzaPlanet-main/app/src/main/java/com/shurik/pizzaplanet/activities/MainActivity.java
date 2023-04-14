@@ -1,4 +1,4 @@
-package com.shurik.pizzaplanet;
+package com.shurik.pizzaplanet.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.shurik.pizzaplanet.fragments.GeolocationFragment;
+import com.shurik.pizzaplanet.R;
 import com.shurik.pizzaplanet.fragments.SupplierFragment;
 import com.shurik.pizzaplanet.fragments.CustomerFragment;
 import com.shurik.pizzaplanet.fragments.BasketFragment;
@@ -69,10 +69,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        // нажимаем на back на нижней панели
         super.onBackPressed();
         if (TutorialActivity.whatIsIt == 1) {
+            // анимация
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         } else if (TutorialActivity.whatIsIt == 2) {
+            // анимация
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
     }

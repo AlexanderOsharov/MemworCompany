@@ -1,4 +1,4 @@
-package com.shurik.pizzaplanet;
+package com.shurik.pizzaplanet.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -10,7 +10,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.shurik.pizzaplanet.adapters.ViewPagerAdapter;
+import com.shurik.pizzaplanet.R;
+import com.shurik.pizzaplanet.adapters.TutorialAdapter;
 import com.shurik.pizzaplanet.databinding.ActivityTutorialBinding;
 
 public class TutorialActivity extends AppCompatActivity {
@@ -19,7 +20,7 @@ public class TutorialActivity extends AppCompatActivity {
 
     private TextView[] dots;
 
-    private ViewPagerAdapter viewPagerAdapter;
+    private TutorialAdapter viewPagerAdapter;
 
     public static int whatIsIt;
 
@@ -64,7 +65,7 @@ public class TutorialActivity extends AppCompatActivity {
             }
         });
 
-        viewPagerAdapter = new ViewPagerAdapter(this);
+        viewPagerAdapter = new TutorialAdapter(this);
 
         binding.slideViewPager.setAdapter(viewPagerAdapter);
 
@@ -89,7 +90,8 @@ public class TutorialActivity extends AppCompatActivity {
 
     ViewPager.OnPageChangeListener viewListener = new ViewPager.OnPageChangeListener() {
         @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        }
 
         @Override
         public void onPageSelected(int position) {
@@ -105,7 +107,8 @@ public class TutorialActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onPageScrollStateChanged(int state) {}
+        public void onPageScrollStateChanged(int state) {
+        }
     };
 
     private int getItem(int i) {
