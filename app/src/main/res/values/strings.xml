@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">Memwor</string>
+    <string name="navigation_drawer_open">Открыть навигационное меню</string>
+    <string name="navigation_drawer_close">Закрыть навигационное меню</string>
+
+    // PizzaPlanet {
+    <string name="customer">Заказчик</string>
+    <string name="supplier">Доставщик</string>
+    <string name="basket">Корзина</string>
+    <string name="settings">Настройки</string>
+    <string name="profile">Профиль</string>
+
+
+
+    // }
+
+    // PumpWiMo {
+    // для BoardActivity
+    <string name="home">Дом</string>
+    <string name="good_morning">Привет, друг!</string>
+    <string name="search">Поиск</string>
+
+    // slides_headings
+    <string name="first_slide_heading">Добро пожаловать</string>
+    <string name="second_slide_heading">Интересные задания!</string>
+    <string name="third_slide_heading">Соревнуйтесь! И станьте первым!</string>
+    <string name="fourth_slide_heading">Развлекайтесь вместе с друзьями!</string>
+    <string name="fifth_slide_heading">Что же вы получите?</string>
+
+    // slides_descriptions
+    <string name="first_slide_description">Мотивация\nПрокачка силы воли\nИ многое другое… в нашем приложении</string>
+    <string name="second_slide_description">В нас есть более 100 уникальных квестов по прокачке силы воли. Рискнёте пройти их все и получить главный приз?</string>
+    <string name="third_slide_description">У Вас много соперников. Дайте им отпор!</string>
+    <string name="fourth_slide_description">Намного интереснее играть в команде. Соберите ее и вперед… нвстречу приключениям!</string>
+    <string name="fifth_slide_description">За проделанную работу полагаются награды. И они у нас тоже есть!</string>
+
+    // swards
+    <string name="swards_first">Давайте познакомимся!</string>
+    <string name="swards_second">Итак..Начнем рассказ</string>
+    <string name="swards_third">Борьба нас захватывает!</string>
+    <string name="swards_fourth">Вместе всегда веселее!</string>
+    <string name="swards_fifth">Победы нас мотивируют!</string>
+
+    <string name="first_fragment_label">ааа</string>
+    <string name="second_fragment_label">ааа</string>
+    <string name="third_fragment_description">ааа</string>
+    <string name="fourth_fragment_description">а</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    // quest - groups
+    // titles
+    <string name="quest_group_title_1">1. Целеутремленность</string>
+    <string name="quest_group_title_2">2. Вера в себя</string>
+    <string name="quest_group_title_3">3. Решительность</string>
+    <string name="quest_group_title_4">4. Усидчивость</string>
+    <string name="quest_group_title_5">5. Сила духа</string>
+    <string name="quest_group_title_6">6. Непоколебимость</string>
+
+    // description
+    <string name="quest_group_description_1">Упорно и настойчиво работайте над достижением своей цели</string>
+    <string name="quest_group_description_2">Будьте уверенны в себе перед лицом вызова. Смело идите вперед</string>
+    <string name="quest_group_description_3">Принимайте смелые решения в трудных обстоятельствах</string>
+    <string name="quest_group_description_4">Сконцентрируйтесь на выполнении одной задачи</string>
+    <string name="quest_group_description_5">Даже когда нет ничего хорошего, вы будете двигаться дальше</string>
+    <string name="quest_group_description_6">Не сдавайтесь. Никогда. Вы не должны бояться никого. Только бездействия</string>
+
+    // }
+</resources>

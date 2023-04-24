@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/registration_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login">
+
+    <ImageView
+        android:id="@+id/logo_planet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="85dp"
+        android:src="@drawable/logo_planet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Регистрация"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo_planet"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/name"
+        android:drawablePadding="13dp"
+        android:hint="Full Name"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/registration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/registration"
+        app:layout_constraintWidth_percent="0.71"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="310dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/phone"
+        android:drawablePadding="13dp"
+        android:hint=" +7 ("
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/registration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/registration"
+        app:layout_constraintWidth_percent="0.71"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editMail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="510dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/mail"
+        android:drawablePadding="13dp"
+        android:hint="EMail"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/registration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/registration"
+        app:layout_constraintWidth_percent="0.71"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editPass"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="710dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/pass"
+        android:drawablePadding="13dp"
+        android:hint="Password"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/registration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/registration"
+        app:layout_constraintWidth_percent="0.71"
+        tools:ignore="MissingConstraints" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/regButton"
+        android:layout_width="286dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/orange_button"
+        android:text="Регистрация"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>

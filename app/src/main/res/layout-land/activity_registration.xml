@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/register_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_back"
+    tools:context=".pumpwimo.activities.RegistrationActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/crAcc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Создать аккаунт"
+                android:textColor="@color/colorWhite"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/usernameET"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_below="@+id/crAcc"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_back"
+                android:hint="Твой email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textColorHint="@color/black"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:id="@+id/parentRelative"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_below="@+id/usernameET"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_back">
+
+                <EditText
+                    android:id="@+id/passwordET"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toStartOf="@+id/passwordIcon"
+                    android:background="@android:color/transparent"
+                    android:hint="Твой пароль"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:textColorHint="@color/black"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/passwordIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:adjustViewBounds="true"
+                    android:padding="10dp"
+                    android:src="@drawable/password_hide" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/telephoneET"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_below="@id/parentRelative"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_back"
+                android:hint="Твой телефон"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textColorHint="@color/black"
+                android:textSize="16sp"
+                tools:ignore="NotSibling" />
+
+            <EditText
+                android:id="@+id/nameET"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_below="@id/telephoneET"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_back"
+                android:hint="Твое имя"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textColorHint="@color/black"
+                android:textSize="16sp"
+                tools:ignore="NotSibling" />
+
+            <Button
+                android:id="@+id/createAcc"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:layout_below="@id/nameET"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:shadowRadius="1"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowColor="@color/colorGrey"
+                android:background="@drawable/round_back_primary"
+                android:text="Создать аккаунт"
+                android:textAllCaps="false"
+                android:textColor="@color/colorBlack"
+                android:textSize="23sp" />
+
+            <RelativeLayout
+                android:id="@+id/what"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/createAcc"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_toStartOf="@+id/orTxt"
+                    android:background="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/orTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="или"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_toEndOf="@+id/orTxt"
+                    android:background="@color/colorWhite" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/signInWith"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_below="@id/what"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_back"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/google" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Google"
+                    android:shadowRadius="1"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowColor="@color/colorGrey"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/signInWith" />
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

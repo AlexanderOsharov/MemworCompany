@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SparklingTextView" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/your_sparkling_color</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.1</item>
+    </style>
+
+    <style name="SwitchTextAppearance">
+        <item name="android:textColor">#FF0404</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="settingsButtons">
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginTop">@dimen/vertical_margin</item>
+        <item name="android:clickable">true</item>
+        <!--        <item name="android:background">@drawable/ripple_effect_settings</item>-->
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="normalText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">@dimen/normalText</item>
+    </style>
+
+    <style name="smallText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
+        <item name="android:textColor">@color/colorGrey</item>
+        <item name="android:textSize">@dimen/smallText</item>
+    </style>
+
+    <style name="separator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginEnd">@dimen/horizontal_margin</item>
+        <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginTop">@dimen/vertical_margin</item>
+        <item name="android:background">@color/colorGrey</item>
+    </style>
+
+    <style name="nightModeSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/night_mode</item>
+        <item name="colorSwitchThumbNormal">@color/colorWhite</item>
+        <item name="android:colorForeground">#99FFFFFF</item>
+    </style>
+
+    <style name="notificationsSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/notification</item>
+        <item name="colorSwitchThumbNormal">@color/colorWhite</item>
+        <item name="android:colorForeground">#99FFFFFF</item>
+    </style>
+
+    <style name="privateAccountSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/private_account</item>
+        <item name="colorSwitchThumbNormal">@color/colorWhite</item>
+        <item name="android:colorForeground">#99FFFFFF</item>
+    </style>
+
+    <!-- Стиль для TextView с id "pizza_name" -->
+    <style name="PizzaNameTextStyle">
+        <item name="android:textColor">#000000</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- Стиль для TextView с id "pizza_venue_price" -->
+    <style name="PizzaPriceTextStyle" parent="android:TextAppearance">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/accent</item>
+    </style>
+
+    <!-- Стиль для ImageView с id "pizza_image" -->
+    <style name="PizzaImageStyle">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <!-- Стиль для TextView с id "pizza_composition" -->
+    <style name="PizzaCompositionTextStyle" parent="android:TextAppearance">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/secondary_text</item>
+    </style>
+
+    <!-- Стиль для ImageButton с id "basket" -->
+    <style name="PizzaBasketImageButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:src">@drawable/ic_basket</item>
+        <item name="android:layout_gravity">end|top</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+
+</resources>
