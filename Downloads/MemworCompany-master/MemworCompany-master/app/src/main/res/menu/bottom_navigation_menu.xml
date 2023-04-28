@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_customer_fragment"
+        android:icon="@drawable/ic_customer"
+        android:title="@string/customer" />
+    <item
+        android:id="@+id/nav_supplier_fragment"
+        android:icon="@drawable/ic_supplier"
+        android:title="@string/supplier" />
+    <item
+        android:id="@+id/nav_basket_fragment"
+        android:icon="@drawable/ic_basket"
+        android:title="@string/basket" />
+    <item
+        android:id="@+id/user_fragment"
+        android:icon="@drawable/ic_person"
+        android:title="@string/profile" />
+    <item
+        android:id="@+id/nav_user_settings_fragment"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings" />
+</menu>

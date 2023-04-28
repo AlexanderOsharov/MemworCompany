@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_back"
+    android:orientation="vertical"
+    tools:context=".activities.LoginActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/come"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="Войти"
+                android:textColor="@color/colorWhite"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/please"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/come"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:text="Пожалуйста, войдите в аккаунт"
+                android:textColor="@color/colorWhite"
+                android:textSize="22sp" />
+
+            <RelativeLayout
+                android:id="@+id/emailRelative"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_below="@id/please"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_back">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="3dp"
+                    android:paddingStart="11dp"
+                    android:src="@drawable/email"
+                    tools:ignore="RtlSymmetry"></ImageView>
+
+                <EditText
+                    android:id="@+id/usernameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:textColorHint="@color/black"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/parentRelative"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_below="@+id/emailRelative"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_back">
+
+                <EditText
+                    android:id="@+id/passwordET"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toStartOf="@+id/passwordIcon"
+                    android:background="@android:color/transparent"
+                    android:hint="Пароль"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:paddingStart="40dp"
+                    android:paddingEnd="20dp"
+                    android:textColorHint="@color/black"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/passwordIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="20dp"
+                    android:adjustViewBounds="true"
+                    android:padding="10dp"
+                    android:src="@drawable/password_hide" />
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="56dp"
+                    android:paddingStart="11dp"
+                    android:src="@drawable/pass"
+                    tools:ignore="RtlSymmetry"></ImageView>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/forgotPasswordBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/parentRelative"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="30dp"
+                android:text="Забыли пароль?"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                tools:ignore="NotSibling" />
+
+            <Button
+                android:id="@+id/signInBtn"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:layout_below="@id/forgotPasswordBtn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:shadowRadius="1"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowColor="@color/colorGrey"
+                android:background="@drawable/round_back_primary"
+                android:text="Войти"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="23sp" />
+
+            <RelativeLayout
+                android:id="@+id/signInWith"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_below="@id/signInBtn"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_back">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/google" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Войти с помощью Google"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp"
+                    android:shadowRadius="1"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowColor="@color/colorGrey"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/guest"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_below="@id/signInWith"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_back">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/guest" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Войти как Гость"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/text_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/guest"
+                android:layout_marginStart="280dp"
+                android:layout_marginTop="30dp"
+                android:text="Нет аккаунта?"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/signUpBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/guest"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/text_1"
+                android:clickable="true"
+                android:focusable="true"
+                android:shadowRadius="1"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowColor="@color/colorGrey"
+                android:text="Зарегистрироваться"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/guest"
+                android:background="@drawable/l_bg" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/signUpBtn"
+                android:background="@drawable/l_bg" />
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>
