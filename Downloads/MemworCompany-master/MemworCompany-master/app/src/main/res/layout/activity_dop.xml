@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:fitsSystemWindows="true"
-    tools:context=".memwor.MemworActivity"
+    tools:context=".DopActivity"
     tools:openDrawer="start">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolBar2"
+            android:id="@+id/toolBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#50281B"
@@ -24,28 +24,13 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/ourtablayout2"
+        <LinearLayout
+            android:id="@+id/vp2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#000000"
-            app:layout_constraintEnd_toEndOf="@id/toolBar2"
-            app:layout_constraintStart_toStartOf="@id/toolBar2"
-            app:layout_constraintTop_toBottomOf="@id/toolBar2"
-            app:tabIndicatorColor="#FFFFFF"
-            app:tabMode="fixed"
-            app:tabSelectedTextColor="#FFFFFF"
-            app:tabTextColor="#B3FFFFFF"
-            tools:ignore="MissingConstraints" />
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/vp23"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ourtablayout2" />
+            app:layout_constraintTop_toBottomOf="@id/toolBar"
+            android:orientation="horizontal" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -16,7 +16,7 @@ import com.shurik.memwor_24.R;
 import com.shurik.memwor_24.databinding.FragmentCustomerBinding;
 import com.shurik.memwor_24.pizza_planet.adapters.NewsAdapter;
 import com.shurik.memwor_24.pizza_planet.adapters.OrganizationAdapter;
-import com.shurik.memwor_24.pizza_planet.fragments.geolocation.Geolocation;
+import com.shurik.memwor_24.pizza_planet.geoLocation.GeoLocation;
 import com.shurik.memwor_24.pizza_planet.model.New;
 import com.shurik.memwor_24.pizza_planet.model.Organization;
 import com.shurik.memwor_24.pizza_planet.pizzasearch.OrganizationParser;
@@ -45,15 +45,15 @@ public class CustomerFragment extends Fragment {
     // layoutManager
     private LinearLayoutManager layoutManager;
 
-    Geolocation geolocation;
+    // геолокация пользователя
+    private GeoLocation geolocation;
 
     public CustomerFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // инициализация binding - а
+
         binding = FragmentCustomerBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
@@ -71,23 +71,19 @@ public class CustomerFragment extends Fragment {
         recyclerViewOrganization = binding.organizationRecyclerview;
         recyclerViewOrganization.setLayoutManager(layoutManager);
 
-        geolocation = new Geolocation(getActivity());
+        geolocation = new GeoLocation(getActivity());
 
-        // возвращаем представление фрагмента (view)
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        Location location = geolocation.getUserLocation();
-//        ArrayList<Organization> organizationList = OrganizationParser.getOrganizations(location);
-//        updateUIWithPizzaVenues(organizationList);
 
         new Thread(() -> {
             Location location = geolocation.getUserLocation();
             try {
-                ArrayList<Organization> organizationList = OrganizationParser.getOrganizations(location);
+                List<Organization> organizationList = OrganizationParser.getOrganizations(location);
                 getActivity().runOnUiThread(() -> updateUIWithPizzaVenues(organizationList));
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -98,15 +94,15 @@ public class CustomerFragment extends Fragment {
 
     private void updateUIWithPizzaVenues(List<Organization> pizzaVenuesList) {
         Location location = geolocation.getUserLocation();
-
-        organizationAdapter = new OrganizationAdapter(getContext(), pizzaVenuesList, location.getLatitude(), location.getLongitude());
+        organizationAdapter = new OrganizationAdapter(getContext(), pizzaVenuesList,
+                location.getLatitude(), location.getLongitude());
         recyclerViewOrganization.setAdapter(organizationAdapter);
     }
 
+    // наполняем список новостей
     private void setInitialData() {
-        /**
-         * Здес мы напполняем список новостей
-         */
+
+        // todo наполнить разными новостями
         news.add(new New(
                 "2 пиццы",
                 R.drawable.pizza_ham,
@@ -134,5 +130,4 @@ public class CustomerFragment extends Fragment {
                 R.drawable.pizza_icon_5,
                 ""));
     }
-
 }

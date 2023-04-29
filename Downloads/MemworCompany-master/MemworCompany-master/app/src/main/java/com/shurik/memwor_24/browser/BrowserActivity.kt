@@ -3,10 +3,9 @@ package com.shurik.memwor_24.browser
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayoutMediator
-import com.shurik.memwor_24.BaseActivity
+import com.shurik.memwor_24.DopActivity
 import com.shurik.memwor_24.memwor.MemworActivity
 import com.shurik.memwor_24.databinding.BrowserMainBinding
 import com.shurik.memwor_24.R
@@ -16,7 +15,7 @@ import com.shurik.memwor_24.browser.fragments_all.TikTokAllFragment
 import com.shurik.memwor_24.browser.fragments_all.VkAllFragment
 import com.shurik.memwor_24.browser.fragments_all.adapter.ViewPagerAdapter
 
-class BrowserActivity : BaseActivity() {
+class BrowserActivity : DopActivity() {
 
     private lateinit var binding: BrowserMainBinding
 
@@ -68,5 +67,4 @@ class BrowserActivity : BaseActivity() {
         }.attach()
     }
 
-    override fun getLayoutId(): Int = R.layout.memwor_main
 }

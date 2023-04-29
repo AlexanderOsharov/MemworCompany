@@ -46,7 +46,7 @@ public class TutorialActivity extends AppCompatActivity {
             }
         });
 
-        // кнопочка "Далее" todo или дальше  - проверить
+        // кнопочка "Дальше"
         binding.next.setOnClickListener(v -> {
             if (getItem(0) < 3) {
                 binding.slideViewPager.setCurrentItem(getItem(1), true);

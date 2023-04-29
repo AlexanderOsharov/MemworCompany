@@ -44,29 +44,70 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MapDialogFragment extends DialogFragment implements Session.RouteListener, DrivingSession.DrivingRouteListener {
+
+    // view - шки
     private MapView mapView;
-    private Point currentPoint; // Текущие координаты
-    private Point destinationPoint; // Координаты изготовителя
-    private ArrayList<String> routesInfo = new ArrayList<>();
     private ImageButton closeButton;
 
-    private PlacemarkMapObject currentPointPlacemark = null;
-    private PlacemarkMapObject destinationPointPlacemark = null;
-    private MapObjectCollection mapObjects;
-
-    private Session searchSession;
+    // точки
+    private Point currentPoint; // Текущие координаты
+    private Point destinationPoint; // Координаты ресторана
     private Point SCREEN_CENTER;
+
+    private MapObjectCollection mapObjects;
+    /**
+     * Коллекция объектов карты,
+     * которая может содержать любой набор элементов объектов карты,
+     * включая вложенные коллекции.
+     */
+
+    /**
+     * PlacemarkMapObject - объект с географическим расположением на карте
+     */
+    private PlacemarkMapObject currentPointPlacemark = null; // метка текущей точки
+    private PlacemarkMapObject destinationPointPlacemark = null; // метка точки назначения
+
     private DrivingRouter drivingRouter;
+    /**
+     * DrivingRouter - интерфейс для маршрутизатора
+     */
+
+    /**
+     * Заметка:
+     * Session - интерфейс, обозначающий текущий сеанс поиска (или прохождения мршрута).
+     * Позволяет отменить поиск и повторить попытку.
+     */
     private DrivingSession drivingSession;
 
-    private int[] routeColors = {Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW, Color.MAGENTA, Color.CYAN};
+    // массив, содержащий определенные цвета
+    // TODO зачем так много цветов
+    private int[] routeColors = {Color.BLUE,
+            Color.GREEN, Color.RED,
+            Color.YELLOW, Color.MAGENTA, Color.CYAN};
 
-    // Вызовите этот метод, чтобы создать новый экземпляр диалогового окна с требуемыми точками
-    public static MapDialogFragment newInstance(Point currentPoint, Point destinationPoint) {
+    /**
+     * // метод для создания фрагмента
+     * (по факту - это диалоговое окно) с нужными точками
+     */
+    public static MapDialogFragment newInstance(Point currentPoint,
+                                                Point destinationPoint) {
         MapDialogFragment fragment = new MapDialogFragment();
+
+        // создаем пакет для данных
         Bundle args = new Bundle();
-        args.putFloatArray("currentPoint", new float[] { (float) currentPoint.getLatitude(), (float) currentPoint.getLongitude() });
-        args.putFloatArray("destinationPoint", new float[] { (float) destinationPoint.getLatitude(), (float) destinationPoint.getLongitude() });
+
+        // сохраняем координаты текущего местоположения
+        args.putFloatArray("currentPoint", new float[]{
+                (float) currentPoint.getLatitude(),
+                (float) currentPoint.getLongitude()
+        });
+
+        // сохраняем координаты точки назначения
+        args.putFloatArray("destinationPoint", new float[]{
+                (float) destinationPoint.getLatitude(),
+                (float) destinationPoint.getLongitude()
+        });
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -74,11 +115,18 @@ public class MapDialogFragment extends DialogFragment implements Session.RouteLi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(STYLE_NO_TITLE, android.R.style.Theme_DeviceDefault_Light_Dialog_MinWidth);
+
+        setStyle(STYLE_NO_TITLE,
+                android.R.style.Theme_DeviceDefault_Light_Dialog_MinWidth);
 
         if (getArguments() != null) {
-            float[] currentCoords = getArguments().getFloatArray("currentPoint");
-            float[] destinationCoords = getArguments().getFloatArray("destinationPoint");
+            // извлекаем данные и сохрнаяем их в массивы
+            float[] currentCoords = getArguments().
+                    getFloatArray("currentPoint");
+            float[] destinationCoords = getArguments().
+                    getFloatArray("destinationPoint");
+
+            // создаем точки
             currentPoint = new Point(currentCoords[0], currentCoords[1]);
             destinationPoint = new Point(destinationCoords[0], destinationCoords[1]);
         }
@@ -91,34 +139,67 @@ public class MapDialogFragment extends DialogFragment implements Session.RouteLi
         View contentView = inflater.inflate(R.layout.dialog_map, container, false);
 
         mapView = contentView.findViewById(R.id.map_view);
-        mapView.getMap().move(new CameraPosition(currentPoint, 14, 0, 0),
-                new Animation(Animation.Type.SMOOTH, 5f), null);
 
+        /**
+         * переход на точку текущего метоположения на карте
+         * с приближением карты и анимацией
+         */
+        mapView.getMap()
+                .move(
+                        new CameraPosition(currentPoint, 14, 0, 0),
+                        new Animation(Animation.Type.SMOOTH, 5f),
+                        null);
+
+        // инициализация некоторых объектов
         drivingRouter = DirectionsFactory.getInstance().createDrivingRouter();
         mapObjects = mapView.getMap().getMapObjects().addCollection();
 
+        // строим маршрут
         buildDriving();
 
-        Bitmap currentLocationBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.current_location_icon);
-        Bitmap resizedCurrentLocationBitmap = Bitmap.createScaledBitmap(currentLocationBitmap, 60, 60, false);
-        ImageProvider currentLocationImage = ImageProvider.fromBitmap(resizedCurrentLocationBitmap);
+        // bitmap текущего местоположения
+        Bitmap currentLocationBitmap = BitmapFactory.
+                decodeResource(getResources(), R.drawable.current_location_icon);
 
-        Bitmap destinationLocationBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.destination_location_icon);
-        Bitmap resizedDestinationLocationBitmap = Bitmap.createScaledBitmap(destinationLocationBitmap, 60, 60, false);
-        ImageProvider destinationLocationImage = ImageProvider.fromBitmap(resizedDestinationLocationBitmap);
+        Bitmap resizedCurrentLocationBitmap = Bitmap
+                .createScaledBitmap(
+                        currentLocationBitmap, 60, 60, false);
 
-        currentPointPlacemark = mapObjects.addPlacemark(currentPoint, currentLocationImage);
-        destinationPointPlacemark = mapObjects.addPlacemark(destinationPoint, destinationLocationImage);
+        ImageProvider currentLocationImage = ImageProvider.fromBitmap(
+                resizedCurrentLocationBitmap);
+
+        // bitmap точки назначения
+        Bitmap destinationLocationBitmap = BitmapFactory.decodeResource
+                (getResources(), R.drawable.destination_location_icon);
+
+        Bitmap resizedDestinationLocationBitmap = Bitmap.
+                createScaledBitmap(
+                        destinationLocationBitmap, 60, 60, false);
+
+        ImageProvider destinationLocationImage = ImageProvider.
+                fromBitmap(resizedDestinationLocationBitmap);
+
+        currentPointPlacemark = mapObjects.addPlacemark(currentPoint,
+                currentLocationImage);
+
+        destinationPointPlacemark = mapObjects.addPlacemark(destinationPoint,
+                destinationLocationImage);
+
         SCREEN_CENTER = new Point(
                 (currentPoint.getLatitude() + destinationPoint.getLatitude()) / 2,
                 (currentPoint.getLongitude() + destinationPoint.getLongitude()) / 2
         );
 
+        // закрытие карты
         closeButton = contentView.findViewById(R.id.close_map);
         closeButton.setOnClickListener(view -> dismiss());
-
         return contentView;
     }
+
+    /**
+     * onStart(), onStop(), onDestroyView() - есди что - то происходит с фргментом,
+     * то это же и происходит с даологовым окошком
+     */
 
     @Override
     public void onStart() {
@@ -145,7 +226,6 @@ public class MapDialogFragment extends DialogFragment implements Session.RouteLi
 
     }
 
-
     @Override
     public void onMasstransitRoutesError(@NonNull Error error) {
         if (error instanceof RemoteError) {
@@ -158,11 +238,15 @@ public class MapDialogFragment extends DialogFragment implements Session.RouteLi
     }
 
     int colorIndex = 0; // начинаем с первого цвета
+
+    // маршруты движения
     @Override
     public void onDrivingRoutes(@NonNull List<DrivingRoute> list) {
+
         for (DrivingRoute route : list) {
             // установка цвета линии
-            PolylineMapObject polyline = mapObjects.addPolyline(route.getGeometry());
+            PolylineMapObject polyline = mapObjects.addPolyline(
+                    route.getGeometry());
             polyline.setStrokeColor(routeColors[colorIndex]);
             colorIndex++; // переход к следующему цвету
             if (colorIndex >= routeColors.length) {
@@ -171,21 +255,24 @@ public class MapDialogFragment extends DialogFragment implements Session.RouteLi
         }
     }
 
-
     @Override
     public void onDrivingRoutesError(@NonNull Error error) {
         String errorMessage = "Неизвестная ошибка";
         Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_SHORT).show();
     }
 
+    // метод для "построения" нашего маршрута
     private void buildDriving() {
         DrivingOptions drivingOptions = new DrivingOptions();
         VehicleOptions vehicleOptions = new VehicleOptions();
         ArrayList<RequestPoint> requestPoints = new ArrayList();
 
-        requestPoints.add(new RequestPoint(currentPoint, RequestPointType.WAYPOINT, null));
-        requestPoints.add(new RequestPoint(destinationPoint, RequestPointType.WAYPOINT, null));
-        drivingSession = drivingRouter.requestRoutes(requestPoints, drivingOptions, vehicleOptions, this);
+        requestPoints.add(new RequestPoint(currentPoint,
+                RequestPointType.WAYPOINT, null));
+        requestPoints.add(new RequestPoint(destinationPoint,
+                RequestPointType.WAYPOINT, null));
+        drivingSession = drivingRouter.requestRoutes(requestPoints,
+                drivingOptions, vehicleOptions, this);
     }
 
     @NonNull
@@ -194,5 +281,3 @@ public class MapDialogFragment extends DialogFragment implements Session.RouteLi
         return super.getDefaultViewModelCreationExtras();
     }
 }
-
-

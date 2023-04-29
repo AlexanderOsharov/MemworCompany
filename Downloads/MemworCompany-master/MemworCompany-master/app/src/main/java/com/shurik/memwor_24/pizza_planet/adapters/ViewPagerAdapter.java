@@ -14,9 +14,10 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.shurik.memwor_24.R;
 
+// adapter для tutorial
 public class ViewPagerAdapter extends PagerAdapter {
 
-    Context context;
+    private Context context;
 
     // изобржения
     int[] images = {
@@ -72,6 +73,7 @@ public class ViewPagerAdapter extends PagerAdapter {
         slideTitleImage.setImageResource(images[position]);
         slideHeading.setText(headings[position]);
         slideDescription.setText(descriptions[position]);
+
         container.addView(view);
         return view;
     }
@@ -81,4 +83,3 @@ public class ViewPagerAdapter extends PagerAdapter {
         container.removeView((RelativeLayout) object);
     }
 }
-

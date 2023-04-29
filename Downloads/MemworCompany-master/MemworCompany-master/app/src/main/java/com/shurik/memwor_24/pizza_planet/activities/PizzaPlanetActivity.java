@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -20,7 +21,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.shurik.memwor_24.BaseActivity;
 import com.shurik.memwor_24.R;
 import com.shurik.memwor_24.databinding.PizzaplanetMainBinding;
 import com.shurik.memwor_24.pizza_planet.fragments.BasketFragment;
@@ -28,17 +28,17 @@ import com.shurik.memwor_24.pizza_planet.fragments.CustomerFragment;
 import com.shurik.memwor_24.pizza_planet.fragments.SupplierFragment;
 import com.shurik.memwor_24.pizza_planet.fragments.UserFragment;
 import com.shurik.memwor_24.pizza_planet.fragments.UserSettingsFragment;
-import com.shurik.memwor_24.pizza_planet.fragments.geolocation.Geolocation;
+import com.shurik.memwor_24.pizza_planet.geoLocation.GeoLocation;
 import com.shurik.memwor_24.pizza_planet.other.Constants;
 import com.yandex.mapkit.MapKitFactory;
 
 import java.util.Arrays;
 
-public class PizzaPlanetActivity extends BaseActivity {
+public class PizzaPlanetActivity extends AppCompatActivity {
 
     private PizzaplanetMainBinding binding;
 
-    // обьявление и нициализация всех фрагментов заранее
+    // обьявление и инициализация всех фрагментов (заранее)
     private CustomerFragment customerFragment = new CustomerFragment();
     private SupplierFragment supplierFragment = new SupplierFragment();
     private BasketFragment basketFragment = new BasketFragment();
@@ -46,7 +46,7 @@ public class PizzaPlanetActivity extends BaseActivity {
     private UserSettingsFragment userSettingsFragment = new UserSettingsFragment();
 
     private BottomNavigationView bottomNavigationView; // панелька навигации
-    private FragmentManager fragmentManager = getSupportFragmentManager();
+    private final FragmentManager fragmentManager = getSupportFragmentManager();
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
 
@@ -55,13 +55,13 @@ public class PizzaPlanetActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = PizzaplanetMainBinding.inflate(getLayoutInflater());
-        setContentView(R.layout.pizzaplanet_main);
+        setContentView(binding.getRoot());
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        mapKitInitialize(this);
         recognizeLocation(this);
+        mapKitInitialize(this);
 
         // Добавление всех фрагментов в транзакцию первоначального добавления
         loadInitialFragments(customerFragment, supplierFragment,
@@ -88,6 +88,7 @@ public class PizzaPlanetActivity extends BaseActivity {
         transaction.commit();
     }
 
+    @SuppressLint("NonConstantResourceId")
     private void switchFragments(int menuItemId,
                                  CustomerFragment customerFragment,
                                  SupplierFragment supplierFragment,
@@ -106,9 +107,6 @@ public class PizzaPlanetActivity extends BaseActivity {
 
         // Затем показываем тот, который соответствует выбранному элементу меню
         switch (menuItemId) {
-            case R.id.nav_customer_fragment:
-                transaction.show(customerFragment);
-                break;
             case R.id.nav_supplier_fragment:
                 if (SupplierFragment.isSupplier) {
                     transaction.show(supplierFragment);
@@ -186,9 +184,9 @@ public class PizzaPlanetActivity extends BaseActivity {
         }
     }
 
+    // определяем геолокацию пользователя
     private void getLocation(Context context) {
-        // метод getUserLocation() можно вызывать из любого другого класса
-        Geolocation geolocation = new Geolocation(context);
+        GeoLocation geolocation = new GeoLocation(context);
         Location location = geolocation.getUserLocation();
     }
 
@@ -200,12 +198,7 @@ public class PizzaPlanetActivity extends BaseActivity {
         ImageButton closeDetails = dialog.findViewById(R.id.close_button);
 
         // удаление окошка
-        closeDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        closeDetails.setOnClickListener(v -> dialog.dismiss());
         dialog.show();
     }
 
@@ -217,18 +210,8 @@ public class PizzaPlanetActivity extends BaseActivity {
         ImageButton closeDetails = dialog.findViewById(R.id.close_button);
 
         // удаление окошка
-        closeDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        closeDetails.setOnClickListener(v -> dialog.dismiss());
         dialog.show();
-    }
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.pizzaplanet_main;
     }
 
     // нажатие на кнопочку back

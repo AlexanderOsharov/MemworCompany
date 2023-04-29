@@ -1,5 +1,4 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -10,8 +9,8 @@
         android:layout_marginStart="13dp"
         android:layout_marginTop="17dp"
         android:background="@drawable/rounded_white_background"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/pizza_image"
@@ -25,8 +24,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
-            android:orientation="vertical"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/pizza_title"
                 android:layout_width="wrap_content"
@@ -34,51 +34,57 @@
                 android:text="Pizza Pepperoni"
                 android:textColor="#373B54"
                 android:textSize="18sp" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:gravity="center_vertical">
+
                 <ImageView
                     android:id="@+id/minus"
                     android:layout_width="25dp"
                     android:layout_height="32dp"
                     android:src="@drawable/minus" />
+
                 <TextView
                     android:id="@+id/quantity"
                     android:layout_width="32dp"
                     android:layout_height="37dp"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:text="1"
                     android:textColor="#000000"
-                    android:textSize="22sp"
-                    android:gravity="center" />
+                    android:textSize="22sp" />
+
                 <ImageView
                     android:id="@+id/plus"
                     android:layout_width="25dp"
                     android:layout_height="31dp"
                     android:layout_marginStart="8dp"
                     android:src="@drawable/plus" />
+
                 <TextView
                     android:id="@+id/price"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
+                    android:layout_gravity="center_vertical|end"
                     android:layout_marginStart="8dp"
                     android:text="500"
                     android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:layout_gravity="center_vertical|end"/>
+                    android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
     <ImageButton
         android:id="@+id/close"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_alignParentEnd="true"
         android:layout_gravity="top|end"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@android:drawable/ic_menu_close_clear_cancel" />
 </RelativeLayout>
