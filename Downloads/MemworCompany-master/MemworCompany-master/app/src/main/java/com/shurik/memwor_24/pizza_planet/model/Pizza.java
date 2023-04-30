@@ -46,6 +46,20 @@ public class Pizza {
         this.quantity = quantity;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    // TODO ЕСЛИ ЧТО - ДОПИШЕМ СЕТТЕРЫ
+
     public int getId() {
         return id;
     }
@@ -69,18 +83,4 @@ public class Pizza {
     public int getQuantity() {
         return quantity;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    // TODO ЕСЛИ ЧТО - ДОПИШЕМ СЕТТЕРЫ
 }

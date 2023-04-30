@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shurik.memwor_24.R;
-import com.shurik.memwor_24.pumpwimo.adapters.ParamsAdapter;
 import com.shurik.memwor_24.pumpwimo.models.Parametr;
 
 import java.util.ArrayList;
@@ -43,45 +42,45 @@ public class BoardActivity extends AppCompatActivity {
         guide = findViewById(R.id.cardTheGuideBook);
         recyclerView = findViewById(R.id.recyclerview);
 
-        // настраиваем адаптер
-        setInitialData();
-        ParamsAdapter adapter = new ParamsAdapter(params, this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(adapter);
-
-        cardTask1.setOnClickListener(v -> {
-            Intent intent = new Intent(BoardActivity.this, QuestActivity.class);
-            startActivity(intent);
-        });
-
-        cardTask2.setOnClickListener(v -> {
-            Intent intent = new Intent(BoardActivity.this, RatingActivity.class);
-            startActivity(intent);
-        });
-
-        cardTask3.setOnClickListener(v -> {
-            Intent intent = new Intent(BoardActivity.this, FriendsActivity.class);
-            startActivity(intent);
-        });
-
-        cardTask4.setOnClickListener(v -> {
-            Intent intent = new Intent(BoardActivity.this, AwardsActivity.class);
-            startActivity(intent);
-        });
-
-        guide.setOnClickListener(v -> {
-            // всплывающее окно
-        });
-
-        acc.setOnClickListener(v -> {
-            Intent intent = new Intent(BoardActivity.this, ProfileActivity.class);
-            startActivity(intent);
-            // ккая то анимация
-        });
-
-        menu_1.setOnClickListener(v -> {
-            // переход нф drawable nav bar
-        });
+//        // настраиваем адаптер
+//        setInitialData();
+//        ParamsAdapter adapter = new ParamsAdapter(params, this);
+//        recyclerView.setLayoutManager(linearLayoutManager);
+//        recyclerView.setAdapter(adapter);
+//
+//        cardTask1.setOnClickListener(v -> {
+//            Intent intent = new Intent(BoardActivity.this, QuestActivity.class);
+//            startActivity(intent);
+//        });
+//
+//        cardTask2.setOnClickListener(v -> {
+//            Intent intent = new Intent(BoardActivity.this, RatingActivity.class);
+//            startActivity(intent);
+//        });
+//
+//        cardTask3.setOnClickListener(v -> {
+//            Intent intent = new Intent(BoardActivity.this, FriendsActivity.class);
+//            startActivity(intent);
+//        });
+//
+//        cardTask4.setOnClickListener(v -> {
+//            Intent intent = new Intent(BoardActivity.this, AwardsActivity.class);
+//            startActivity(intent);
+//        });
+//
+//        guide.setOnClickListener(v -> {
+//            // всплывающее окно
+//        });
+//
+//        acc.setOnClickListener(v -> {
+//            Intent intent = new Intent(BoardActivity.this, ProfileActivity.class);
+//            startActivity(intent);
+//            // ккая то анимация
+//        });
+//
+//        menu_1.setOnClickListener(v -> {
+//            // переход нф drawable nav bar
+//        });
     }
 
     private void setInitialData() {
