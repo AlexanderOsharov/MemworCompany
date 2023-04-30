@@ -40,11 +40,18 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketView
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull BasketViewHolder holder, int position) {
+
         Pizza pizza = pizzaList.get(position);
+
         holder.pizzaTitle.setText(pizza.getTitle());
-        int sum = Integer.parseInt(pizza.getFee().replaceAll("\\D+", "")) * pizza.getQuantity();
+
+        int sum = Integer.parseInt(
+                pizza.getFee().replaceAll("\\D+", ""))
+                * pizza.getQuantity();
+
         holder.price.setText(String.valueOf(sum) + pizza.getFee().replaceAll("\\d", ""));
         holder.quantity.setText(String.valueOf(pizza.getQuantity()));
+
         Glide.with(holder.pizzaImage.getContext())
                 .load(pizza.getPic())
                 .into(holder.pizzaImage);
@@ -60,38 +67,41 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketView
     }
 
     class BasketViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView pizzaImage;
-        TextView pizzaTitle;
-        TextView price;
-        ImageView minus;
-        TextView quantity;
-        ImageView plus;
-        ImageButton close;
+        private TextView pizzaTitle;
+        private ImageView pizzaImage;
+        private TextView quantity;
+        private TextView price;
+        private ImageView minus;
+        private ImageView plus;
+        private ImageButton close;
 
-        BasketViewHolder(View view) {
+        public BasketViewHolder(View view) {
             super(view);
-            pizzaImage = view.findViewById(R.id.pizza_image);
             pizzaTitle = view.findViewById(R.id.pizza_title);
+            pizzaImage = view.findViewById(R.id.pizza_image);
+
+            quantity = view.findViewById(R.id.quantity);
             price = view.findViewById(R.id.price);
+
             minus = view.findViewById(R.id.minus);
             minus.setOnClickListener(this);
-            quantity = view.findViewById(R.id.quantity);
+
             plus = view.findViewById(R.id.plus);
             plus.setOnClickListener(this);
+
             close = view.findViewById(R.id.close);
             close.setOnClickListener(this);
         }
 
-        @SuppressLint("SetTextI18n")
+        @SuppressLint({"SetTextI18n", "NonConstantResourceId"})
         @Override
         public void onClick(View v) {
-            // get the pizza item at the clicked position
             Pizza item = pizzaList.get(getAdapterPosition());
 
             switch (v.getId()) {
                 case R.id.minus:
                     int qty = 1;
-                    if(!TextUtils.isEmpty(quantity.getText().toString())) {
+                    if (!TextUtils.isEmpty(quantity.getText().toString())) {
                         qty = Integer.parseInt(quantity.getText().toString());
                     }
                     int sum = 0;
@@ -112,7 +122,7 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketView
 
                 case R.id.plus:
                     int qty1 = 1;
-                    if(!TextUtils.isEmpty(quantity.getText().toString())) {
+                    if (!TextUtils.isEmpty(quantity.getText().toString())) {
                         qty1 = Integer.parseInt(quantity.getText().toString());
                     }
                     int sum1 = 0;
@@ -132,7 +142,6 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketView
                 case R.id.close:
                     removePizza(getAdapterPosition());
                     break;
-
             }
         }
     }
@@ -151,7 +160,8 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketView
         // Удалить пиццу из локальной базы данных
         new Thread(() -> {
             PizzaEntity pizzaEntity = new PizzaEntity();
-            pizzaEntity.setId(item.getId()); // Не забудьте присвоить Id пицце в Pizza.java и установить его при создании Pizza из PizzaEntity
+            pizzaEntity.setId(item.getId());
+            // Не забудьте присвоить Id пицце в Pizza.java и установить его при создании Pizza из PizzaEntity
             BasketFragment.pizzaDao.delete(pizzaEntity);
         }).start();
     }
@@ -164,18 +174,26 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketView
         TextView pizzaTitleDetails = dialog.findViewById(R.id.titleText);
         ImageView pizzaPicDetails = dialog.findViewById(R.id.picFood);
         TextView pizzaDescriptionDetails = dialog.findViewById(R.id.descriptionTxt);
+
         TextView pizzaFeeDetails = dialog.findViewById(R.id.feeTxt);
+
         ImageButton closeDetails = dialog.findViewById(R.id.crest);
+
         ImageView plus = dialog.findViewById(R.id.plus);
-        TextView qnt = dialog.findViewById(R.id.numberOrderTxt);
         ImageView minus = dialog.requireViewById(R.id.minus);
 
+        TextView qnt = dialog.findViewById(R.id.numberOrderTxt);
+
         pizzaTitleDetails.setText(holder.pizzaTitle.getText());
+
         Glide.with(holder.itemView.getContext())
                 .load(pizza.getPic())
                 .into(pizzaPicDetails);
+
         pizzaDescriptionDetails.setText(pizza.getDescription());
+
         pizzaFeeDetails.setText(pizza.getFee());
+
         qnt.setText(holder.quantity.getText());
 
         // удаление окошка
@@ -186,31 +204,23 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketView
             }
         });
 
-        plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int qty1 = Integer.parseInt(qnt.getText().toString());
-                qty1++;
-                qnt.setText(String.valueOf(qty1));
-                holder.quantity.setText(String.valueOf(qty1));
-                pizza.setQuantity(qty1);
-            }
+        plus.setOnClickListener(v -> {
+            int qty1 = Integer.parseInt(qnt.getText().toString());
+            qty1++;
+            qnt.setText(String.valueOf(qty1));
+            holder.quantity.setText(String.valueOf(qty1));
+            pizza.setQuantity(qty1);
         });
 
-        minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int qty = Integer.parseInt(holder.quantity.getText().toString());
-                if (qty > 1) {
-                    qty--;
-                    qnt.setText(String.valueOf(qty));
-                    holder.quantity.setText(String.valueOf(qty));
-                    pizza.setQuantity(qty);
-                }
+        minus.setOnClickListener(v -> {
+            int qty = Integer.parseInt(holder.quantity.getText().toString());
+            if (qty > 1) {
+                qty--;
+                qnt.setText(String.valueOf(qty));
+                holder.quantity.setText(String.valueOf(qty));
+                pizza.setQuantity(qty);
             }
         });
-
         dialog.show();
     }
-
 }

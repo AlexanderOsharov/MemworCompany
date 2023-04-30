@@ -20,6 +20,7 @@ import com.yandex.mapkit.geometry.Point;
 import java.util.List;
 
 public class OrganizationAdapter extends RecyclerView.Adapter<OrganizationAdapter.ViewHolder> {
+
     private Context context;
 
     // список организаций
@@ -28,15 +29,14 @@ public class OrganizationAdapter extends RecyclerView.Adapter<OrganizationAdapte
     // адаптер для пицц
     private PizzaAdapter pizzaAdapter;
 
+    // координаты местоположения пользователя
     private Double latitude;
     private Double longitude;
 
-    public OrganizationAdapter(Context context, List<Organization> organizationList) {
-        this.context = context;
-        this.organizationList = organizationList;
-    }
-
-    public OrganizationAdapter(Context context, List<Organization> organizationList, Double latitude, Double longitude) {
+    public OrganizationAdapter(Context context,
+                               List<Organization> organizationList,
+                               Double latitude,
+                               Double longitude) {
         this.context = context;
         this.organizationList = organizationList;
         this.latitude = latitude;
@@ -52,27 +52,33 @@ public class OrganizationAdapter extends RecyclerView.Adapter<OrganizationAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         Organization organization = organizationList.get(position);
+
         holder.organizationName.setText(organization.getName());
         holder.organizationAddress.setText(organization.getAddress());
 
-        holder.organizationName.setOnClickListener(view -> {
+        holder.organizationName.setOnClickListener(view -> // при нажатии на название организации
+                // выводим список пицц (горионтальный)
+        {
             RecyclerView pizzaRecyclerView = ((Activity) context).findViewById(R.id.pizza_recyclerview_customer);
             pizzaRecyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
             pizzaAdapter = new PizzaAdapter(context, organization.getPizzaList());
             pizzaRecyclerView.setAdapter(pizzaAdapter);
         });
 
-        holder.organizationAddress.setOnClickListener(view -> {
+        //
+        holder.organizationAddress.setOnClickListener(view -> // при нажатии на адресс организации
+                // строим путь до организации
+        {
             MapDialogFragment mapDialogFragment = MapDialogFragment.newInstance(
                     new Point(latitude, longitude),
-                    new Point(Double.parseDouble(organization.getLatitude()), Double.parseDouble(organization.getLongitude()))
+                    new Point(Double.parseDouble(organization.getLatitude()),
+                            Double.parseDouble(organization.getLongitude()))
             );
 
             mapDialogFragment.show(((AppCompatActivity) context).getSupportFragmentManager(), "map_dialog");
         });
-
-
     }
 
     @Override
@@ -80,9 +86,9 @@ public class OrganizationAdapter extends RecyclerView.Adapter<OrganizationAdapte
         return organizationList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView organizationName;
-        TextView organizationAddress;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        private TextView organizationName;
+        private TextView organizationAddress;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -90,6 +96,4 @@ public class OrganizationAdapter extends RecyclerView.Adapter<OrganizationAdapte
             organizationAddress = itemView.findViewById(R.id.organization_address);
         }
     }
-
-
 }

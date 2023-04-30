@@ -1,6 +1,6 @@
 package com.shurik.memwor_24.pizza_planet.model;
 
-// класс новости
+// класс новости (скидка или то - то еще)
 public class New {
 
     // название новости
@@ -38,4 +38,3 @@ public class New {
         return pizza_icon;
     }
 }
-

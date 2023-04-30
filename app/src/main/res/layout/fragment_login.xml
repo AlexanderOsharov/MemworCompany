@@ -5,7 +5,6 @@
     android:id="@+id/login_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login"
     android:orientation="horizontal">
 
     <ImageView
@@ -42,6 +41,7 @@
         android:drawableLeft="@drawable/mail"
         android:drawablePadding="13dp"
         android:hint="Email"
+        android:inputType="textEmailAddress"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/registration"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,6 +59,7 @@
         android:drawableLeft="@drawable/phone"
         android:drawablePadding="13dp"
         android:hint=" +7 ("
+        android:inputType="phone"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/registration"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,6 +74,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="350dp"
         android:layout_marginEnd="70dp"
+        android:clickable="true"
+        android:focusable="true"
         android:text="Забыли пароль"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
@@ -83,12 +86,12 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/regButton"
+        android:id="@+id/logButton"
         android:layout_width="286dp"
         android:layout_height="64dp"
         android:layout_marginBottom="140dp"
         android:background="@drawable/orange_button"
-        android:text="Регистрация"
+        android:text="Войти"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -98,6 +101,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
+
     <TextView
         android:id="@+id/noAcc"
         android:layout_width="wrap_content"
@@ -119,6 +123,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="140dp"
         android:layout_marginBottom="100dp"
+        android:clickable="true"
+        android:focusable="true"
         android:text="Зарегистрироваться"
         android:textColor="#FF3D00"
         android:textSize="20sp"

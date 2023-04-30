@@ -8,9 +8,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="310dp"
         android:layout_height="150dp"
-        app:cardCornerRadius="30dp"
         android:layout_marginStart="28dp"
         android:background="@color/white"
+        app:cardCornerRadius="30dp"
         app:cardElevation="15dp"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
@@ -27,17 +27,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
             android:text="2 пиццы"
             android:textColor="@color/white"
-            android:textSize="25sp"
+            android:textSize="27sp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/pizza_icon"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="47dp"
             android:src="@drawable/pizza_icon_1" />
 
         <TextView
@@ -45,10 +46,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="110dp"
             android:text="Скидка 30%"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 

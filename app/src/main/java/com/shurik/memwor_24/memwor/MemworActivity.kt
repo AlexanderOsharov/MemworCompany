@@ -4,9 +4,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Switch
 import com.google.android.material.tabs.TabLayoutMediator
-import com.shurik.memwor_24.BaseActivity
+import com.shurik.memwor_24.DopActivity
 import com.shurik.memwor_24.databinding.MemworMainBinding
 import com.shurik.memwor_24.R
 import com.shurik.memwor_24.browser.BrowserActivity
@@ -14,9 +13,8 @@ import com.shurik.memwor_24.memwor.fragments.InDevelopmentFragment
 import com.shurik.memwor_24.memwor.fragments.RedditFragment
 import com.shurik.memwor_24.memwor.fragments.TelegramFragment
 import com.shurik.memwor_24.browser.fragments_all.adapter.ViewPagerAdapter
-import java.util.*
 
-class MemworActivity : BaseActivity() {
+class MemworActivity : DopActivity() {
     private lateinit var binding: MemworMainBinding
 
     private fun Context.startActivityWithAnimation(intent: Intent) {
@@ -48,7 +46,7 @@ class MemworActivity : BaseActivity() {
 
         //VK.initialize(this)
 
-        binding.vp2.setPageTransformer(ZoomOutPageTransformer())
+        binding.vp23.setPageTransformer(ZoomOutPageTransformer())
         /*toggleSwitch = binding.toggleSwitch
 //        toggleSwitch.setOnClickListener {
 //            toggleSwitch.isChecked = !toggleSwitch.isChecked
@@ -69,11 +67,9 @@ class MemworActivity : BaseActivity() {
         }*/
 
         val adapter = ViewPagerAdapter(this, fragList) // создаем адаптер и передаем список фрагментов
-        binding.vp2.adapter = adapter // устанавливаем адаптер для ViewPager2
-        TabLayoutMediator(binding.ourtablayout, binding.vp2) { tab, pos ->
+        binding.vp23.adapter = adapter // устанавливаем адаптер для ViewPager2
+        TabLayoutMediator(binding.ourtablayout2, binding.vp23) { tab, pos ->
             tab.text = fragListTitles[pos]
         }.attach()
     }
-
-    override fun getLayoutId(): Int = R.layout.memwor_main
 }

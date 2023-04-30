@@ -113,5 +113,4 @@
             android:buttonTint="@color/colorEdit" />
 
     </LinearLayout>
-
 </RelativeLayout>

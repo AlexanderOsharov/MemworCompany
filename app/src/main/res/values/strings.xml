@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Memwor</string>
+
+
     <string name="navigation_drawer_open">Открыть навигационное меню</string>
     <string name="navigation_drawer_close">Закрыть навигационное меню</string>
 
@@ -9,7 +11,6 @@
     <string name="basket">Корзина</string>
     <string name="settings">Настройки</string>
     <string name="profile">Профиль</string>
-
 
 
     // }
@@ -64,6 +65,10 @@
     <string name="quest_group_description_4">Сконцентрируйтесь на выполнении одной задачи</string>
     <string name="quest_group_description_5">Даже когда нет ничего хорошего, вы будете двигаться дальше</string>
     <string name="quest_group_description_6">Не сдавайтесь. Никогда. Вы не должны бояться никого. Только бездействия</string>
+    <string name="memwor">Memwor</string>
+    <string name="browser">Browser</string>
+    <string name="pumpwimo">PumpWiMo</string>
+    <string name="pizzaplanet">PizzaPlanet</string>
 
     // }
 </resources>

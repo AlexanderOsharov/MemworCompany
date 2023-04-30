@@ -1,8 +1,5 @@
 package com.shurik.memwor_24.pizza_planet.pizzasearch;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.shurik.memwor_24.pizza_planet.model.Pizza;
 
 import org.jsoup.Jsoup;
@@ -12,87 +9,99 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import java.util.List;
 
 public class PizzaParser {
 
-    // Метод для получения массива пицц (названия, описания, цены)
-    public static ArrayList<Pizza> getPizzas(String id) throws IOException {
-        ArrayList<Pizza> pizzas = new ArrayList<>();
+    // Метод для получения списка пицц (названия, описания, цены)
+    public static List<Pizza> getPizzaList(String id) throws IOException {
+
+        // создание списка пицц
+        List<Pizza> pizzaList = new ArrayList<>();
+
         Document doc = Jsoup.connect(getOrganizationPage(id)).get();
-        if (isContainsMenu(doc)) {
-            if (isContainsPizza(doc)) {
-                Elements categories = doc.getElementsByClass("business-full-items-grouped-view__category");
-                for (Element item : categories) {
-                    if (isPizzaСategory(item)) {
-                        Elements info = item.getElementsByClass("related-product-view _size_normal");
+        /**
+         *  вставлем ссылку на местоположение организации на Яндекс Картах,
+         *  Сохраняем все данные в объект типа Document
+         */
+
+        if (isContainsMenu(doc)) { // если у организации есть меню
+
+            if (isContainsPizza(doc)) { // если в этом меню есть пицца
+
+                Elements categories = doc.
+                        getElementsByClass("business-full-items-grouped-view__category");
+                // записываем все элементы класса категорий в categories
+
+                for (Element item : categories) { // "бегаем" по категориям
+
+                    if (isPizzaСategory(item)) { // в item есть пицца?
+                        Elements info = item.
+                                getElementsByClass("related-product-view _size_normal");
+
                         for (Element e : info) {
-                            pizzas.add(new Pizza(e.select(".related-item-photo-view__title").text(),
-                                    e.select(".related-item-photo-view__description").text(),
-                                    "https://e0.edimdoma.ru/data/posts/0002/1429/21429-ed4_wide.jpg?1631194036",
-                                    e.select(".related-product-view__price").text()));
+                            pizzaList.add(
+                                    new Pizza(
+                                            e.select(".related-item-photo-view__title").text(), // Название пиццы
+                                            e.select(".related-item-photo-view__description").text(), // Описание пицыы
+                                            "https://e0.edimdoma.ru/data/posts/0002/1429/21429-ed4_wide.jpg?1631194036", // картинка пиццы TODO пока тоько одна
+                                            e.select(".related-product-view__price").text() // цена пиццы
+                                    )
+                            );
                         }
+
                     }
+
                 }
-            } else {
-                System.out.println("К сожалению, на странице организации отсутствует пицца.");
-                return null;
-            }
-        } else {
-            System.out.println("К сожалению, на странице организации отсутствует меню.");
-            return null;
-        }
-        return pizzas;
+
+            } else return null; // нет пиццы - возвращаем null
+
+        } else return null; // нет меню - возвращаем null
+
+        return pizzaList; // если же все есть - возвращаем список пицц
     }
 
-    // Метод для получения id заведения
-    private static String getId(String organization) throws IOException {
-        // Получение информации о заведении в json формате
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().
-                url("https://search-maps.yandex.ru/v1/?text=" + organization + ",Волгоград&type=biz&lang=ru_RU&results=1&apikey=f07e4006-27b1-4c34-ab91-37e3314ad93d").
-                build();
-        Response response = client.newCall(request).execute();
-
-        // Получение id органзации
-        assert response.body() != null;
-        JsonObject object = JsonParser.parseString(response.body().string()).getAsJsonObject();
-        JsonArray features = (JsonArray) object.get("features");
-        JsonObject item = (JsonObject) features.get(0);
-        JsonObject properties = (JsonObject) item.get("properties");
-        JsonObject companyMetaData = (JsonObject) properties.get("CompanyMetaData");
-        return String.valueOf(companyMetaData.get("id")).replace("\"", "");
-    }
-
-    // Метод для формирования ссылки организации по переданному id
-    private static String getOrganizationPage (String id) {
+    /**
+     * Метод для формирования ссылки организации
+     * (ссылки на местоположнение ресторана на Яндекс Картах)
+     * по переданному id
+     */
+    private static String getOrganizationPage(String id) {
         return "https://yandex.ru/maps/org/" + id + "/menu";
     }
 
     // Метод для проверки наличия меню на странице организации
     private static boolean isContainsMenu(Document doc) {
         Elements menu = doc.select("div.carousel__content");
-        return menu.select("a").text().contains("Меню");
+        // берем из документа определенный блок - информация о кафе
+        // сохраняем в объект типа Elements
+
+        // проверяем, содержит ли инфа меню кафе
+        return menu.select("a") // TODO ПОЧЕМУ select("a")?
+                .text()
+                .contains("Меню");
     }
 
-    // Метод для проверки наличия пиццы на странице организации
+    // Метод для проверки наличия пиццы в меню организации
     private static boolean isContainsPizza(Document doc) {
-        Elements categories = doc.getElementsByClass("business-full-items-grouped-view__category");
-        for (Element item : categories) {
-            if (item.select(".business-full-items-grouped-view__title").text().equals("Пицца") ||
-                    item.select(".business-full-items-grouped-view__title").text().equals("Пиццa")) {
-                return true;
-            }
+        Elements categories = doc
+                .getElementsByClass("business-full-items-grouped-view__category");
+        // записываем все элементы класса категорий в categories
+
+        for (Element item : categories) { // "пробегаемся по категориям"
+            String str = item
+                    .select(".business-full-items-grouped-view__title").text();
+            // записываем в str название категории
+
+            if (str.equals("Пицца")) return true; // если категори - пицца, то возвращаем true
         }
-        return false;
+        return false; // нет - false
     }
 
-    // Метод для проверки наличия пиццы на странице организации
-    private static boolean isPizzaСategory (Element item) {
-        return item.select(".business-full-items-grouped-view__title").text().equals("Пицца") ||
-                item.select(".business-full-items-grouped-view__title").text().equals("Пиццa");
+    // Метод для проверки наличия пиццы в объекти типа Element
+    private static boolean isPizzaСategory(Element item) {
+        return item.select(".business-full-items-grouped-view__title")
+                .text().
+                equals("Пицца");
     }
 }

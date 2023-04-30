@@ -1,30 +1,50 @@
 package com.shurik.memwor_24.pizza_planet.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
+// класс организации / кафе / ресторана
 public class Organization {
+
+    // id - шник
+    private int id;
+
+    // название кафе / ресторана
     private String name;
+
+    // адресс кафе / ресторана
     private String address;
-    private String id;
-    private String latitude;
-    private String longitude;
-    private List<Pizza> pizzas;
 
-    public Organization(String address, String name, String id) {
-        this.address = address;
-        this.name = name;
+    // координаты кафе
+    private String latitude; // широта
+    private String longitude; // долгота
+
+    // список пицц в данном кафе / ресторане
+    private List<Pizza> pizzaList;
+
+    public Organization(int id,
+                        String name,
+                        String address,
+                        String latitude,
+                        String longitude,
+                        List<Pizza> pizzaList) {
         this.id = id;
-    }
-
-
-    public Organization(String address, String name, String id, ArrayList<Pizza> pizzas, String latitude, String longitude) {
-        this.address = address;
         this.name = name;
-        this.id = id;
-        this.pizzas = pizzas;
+        this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.pizzaList = pizzaList;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     public String getLatitude() {
@@ -35,23 +55,7 @@ public class Organization {
         return longitude;
     }
 
-    public List<Pizza> getPizzas() {
-        return pizzas;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getId() {
-        return id;
-    }
-
     public List<Pizza> getPizzaList() {
-        return pizzas;
+        return pizzaList;
     }
 }
