@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "542704973259",
+    "firebase_url": "https://memwordatabase-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "memwordatabase",
+    "storage_bucket": "memwordatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542704973259:android:d5da9a917779d6a995f24e",
+        "android_client_info": {
+          "package_name": "com.example.kotlinprojecttest2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542704973259-9o3048j69ff2jbbs2dv0ms4tfe52pgop.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAT3VI9nvRqfv0win8HDwp1Vs2ULGzppoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542704973259-9o3048j69ff2jbbs2dv0ms4tfe52pgop.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542704973259:android:fc5770885df2b85195f24e",
+        "android_client_info": {
+          "package_name": "com.shurik.memwor_24"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542704973259-9o3048j69ff2jbbs2dv0ms4tfe52pgop.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAT3VI9nvRqfv0win8HDwp1Vs2ULGzppoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542704973259-9o3048j69ff2jbbs2dv0ms4tfe52pgop.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

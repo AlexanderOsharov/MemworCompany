@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -31,6 +33,7 @@ android {
         jvmTarget = '1.8'
     }
     apply plugin: 'kotlin-android-extensions'
+    apply plugin: 'com.google.gms.google-services'
 
     buildFeatures{
         viewBinding true
@@ -44,6 +47,8 @@ android {
 }
 
 dependencies {
+
+
     // Navigation Drawer
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.0'
@@ -70,6 +75,9 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
 
+    // rxjava
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
+
     // TODO: }
 
     // TODO: PumpWiMo {
@@ -81,6 +89,9 @@ dependencies {
     implementation "androidx.viewpager2:viewpager2:1.1.0-beta01"
 
     // Firebase
+    implementation platform('com.google.firebase:firebase-bom:31.5.0')
+    implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
+    implementation 'com.google.android.material:material:1.4.0'
     implementation platform('com.google.firebase:firebase-bom:31.2.3')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-auth' // авторизация в бд
@@ -92,8 +103,10 @@ dependencies {
     // For API
     // okhttp
     implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.10.0'
     // retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.9.0"
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     // mapKit
     implementation 'com.yandex.android:maps.mobile:4.3.1-full'

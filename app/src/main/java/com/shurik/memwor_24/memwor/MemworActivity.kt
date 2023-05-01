@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Switch
 import com.google.android.material.tabs.TabLayoutMediator
+import com.shurik.memwor_22.fragments.VkFragment
 import com.shurik.memwor_24.BaseActivity
 import com.shurik.memwor_24.databinding.MemworMainBinding
 import com.shurik.memwor_24.R
@@ -30,7 +31,7 @@ class MemworActivity : BaseActivity() {
     }
 
     private val fragList = listOf(
-        InDevelopmentFragment.newInstance(),
+        VkFragment.newInstance(),
         TelegramFragment.newInstance(),
         RedditFragment.newInstance(),
         InDevelopmentFragment.newInstance(),
