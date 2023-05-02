@@ -2,22 +2,22 @@ package com.shurik.memwor_24.pizza_planet.model;
 
 import com.shurik.memwor_24.pizza_planet.order_database.OrderEntity;
 
+// класс пицы (которая лежит на сервере)
 public class PizzaSev {
-    // класс пицы (которая лежит на сервере)
 
-    private int id;
+    private int id; // шв - шник
 
-    private String title;
+    private String title; // название
 
-    private String description;
+    private String description; // описание
 
-    private PizzaSevPicture pizzaPicture;
+    private PizzaSevPicture pizzaPicture; // картинка
 
-    private int price;
+    private int price; // цена
 
-    private int quantity = 1;
+    private int quantity = 1; // количество
 
-    private OrderEntity order;
+    private OrderEntity order; // заказ
 
     public PizzaSev(int id, String title,
                     String description, PizzaSevPicture pizzaPicture,

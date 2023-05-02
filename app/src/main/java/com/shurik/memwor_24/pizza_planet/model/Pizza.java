@@ -21,17 +21,6 @@ public class Pizza {
     // количество
     private int quantity = 1;
 
-
-    public Pizza(String title,
-                 String desciption,
-                 String pic,
-                 String fee) {
-        this.title = title;
-        this.desciption = desciption;
-        this.pic = pic;
-        this.fee = fee;
-    }
-
     public Pizza(int id,
                  String title,
                  String desciption,
@@ -44,6 +33,16 @@ public class Pizza {
         this.pic = pic;
         this.fee = fee;
         this.quantity = quantity;
+    }
+
+    public Pizza(String title,
+                 String desciption,
+                 String pic,
+                 String fee) {
+        this.title = title;
+        this.desciption = desciption;
+        this.pic = pic;
+        this.fee = fee;
     }
 
     public void setId(int id) {

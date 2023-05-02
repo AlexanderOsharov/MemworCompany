@@ -12,11 +12,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 @Entity(tableName = "order")
+// класс заказа
 public class OrderEntity {
-    // класс заказа
 
     @PrimaryKey(autoGenerate = true)
-    public long id;
+    public long orderId; // id - шник
 
     @ColumnInfo(name = "customer")
     @NotNull
@@ -24,21 +24,21 @@ public class OrderEntity {
 
     @ColumnInfo(name = "customerAddress")
     @NotNull
-    private String customerAddress;
+    private String customerAddress; // адресс заказчика
 
     @ColumnInfo(name = "pizzaList")
     @NotNull
-    private List<PizzaSev> pizzaList;
+    private List<PizzaSev> pizzaList; // список пицц
 
     @ColumnInfo(name = "completed")
-    private int completed = 0;
+    private int completed = 0; // выполнен, нет, в процессе
 
-    public OrderEntity(long id,
+    public OrderEntity(long orderId,
                        @NotNull UserEntity customer,
                        @NotNull String customerAddress,
                        @NotNull List<PizzaSev> pizzaList,
                        int completed) {
-        this.id = id;
+        this.orderId = orderId;
         this.customer = customer;
         this.customerAddress = customerAddress;
         this.pizzaList = pizzaList;
@@ -55,8 +55,8 @@ public class OrderEntity {
         this.completed = completed;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
     }
 
     public void setCustomer(@NotNull UserEntity customer) {
@@ -75,8 +75,8 @@ public class OrderEntity {
         this.completed = completed;
     }
 
-    public long getId() {
-        return id;
+    public long getOrderId() {
+        return orderId;
     }
 
     @NotNull

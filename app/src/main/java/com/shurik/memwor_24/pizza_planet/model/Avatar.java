@@ -3,14 +3,14 @@ package com.shurik.memwor_24.pizza_planet.model;
 // класс аватраки пользователя
 public class Avatar {
 
-    private long id; // id - шник
+    private long avatarId; // id - шник
 
     private String avatarUri; // uri картинки
 
     private Phone phone; // телефон пользователя
 
-    public Avatar(long id, String avatarUri, Phone phone) {
-        this.id = id;
+    public Avatar(long avatarId, String avatarUri, Phone phone) {
+        this.avatarId = avatarId;
         this.avatarUri = avatarUri;
         this.phone = phone;
     }
@@ -21,7 +21,7 @@ public class Avatar {
     }
 
     public long getId() {
-        return id;
+        return avatarId;
     }
 
     public String getAvatarUri() {

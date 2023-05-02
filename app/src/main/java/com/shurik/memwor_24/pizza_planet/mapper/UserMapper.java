@@ -11,12 +11,13 @@ public class UserMapper {
         UserEntity user = null;
 
         try {
-            user = new UserEntity(jsonObject.getLong("id"), // id - шник
-                    jsonObject.getString("name"), // имя
+            user = new UserEntity(jsonObject.getLong("userId"), // id - шник
+                    jsonObject.getString("userName"), // имя
                     PhoneMapper.phoneFromUserJson(jsonObject), // телефон
-                    jsonObject.getString("mail"), // mail
-                    jsonObject.getString("password"), // password
-                    AvatarMapper.avatarFromUserJson(jsonObject) // аватарка
+                    jsonObject.getString("userMail"), // mail
+                    jsonObject.getString("userPassword"), // password
+                    AvatarMapper.avatarFromUserJson(jsonObject), // аватарка
+                    Integer.parseInt(jsonObject.getString("customerOrNot")) // доставщик или нет
             );
         } catch (JSONException e) {
             e.printStackTrace();
