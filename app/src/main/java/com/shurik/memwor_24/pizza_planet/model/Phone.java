@@ -3,25 +3,25 @@ package com.shurik.memwor_24.pizza_planet.model;
 // класс телефона пользователя
 public class Phone {
 
-    private long id; // id - шник
+    private long phoneId; // id - шник
 
-    private String number; // номер телфона
+    private String phoneNumber; // номер телфона
 
-    public Phone(long id, String number) {
-        this.id = id;
-        this.number = number;
+    public Phone(long phoneId, String phoneNumber) {
+        this.phoneId = phoneId;
+        this.phoneNumber = phoneNumber;
     }
 
-    public Phone(String number) {
-        this.number = number;
+    public Phone(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public long getId() {
-        return id;
+        return phoneId;
     }
 
     public String getNumber() {
-        return number;
+        return phoneNumber;
     }
 
     // получение телефона в виде числа

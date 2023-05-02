@@ -10,89 +10,107 @@ import com.shurik.memwor_24.pizza_planet.model.Phone;
 import org.jetbrains.annotations.NotNull;
 
 @Entity(tableName = "user")
+// класс пользователя
 public class UserEntity {
-    // класс пользователя
 
     @PrimaryKey(autoGenerate = true)
-    public long id;
+    public long userId; // id - шник пользователя
 
     @ColumnInfo(name = "name")
     @NotNull
-    public String name;
+    public String userName; // имя пользователя
 
     @ColumnInfo(name = "phone")
     @NotNull
-    public Phone phone;
+    public Phone phone; // телефон
 
     @ColumnInfo(name = "mail")
     @NotNull
-    public String mail;
+    public String userMail; // mail
 
     @ColumnInfo(name = "password")
     @NotNull
-    public String password;
+    public String userPassword; // пароль
 
     @ColumnInfo(name = "avatar")
     @NotNull
-    public Avatar avatar;
+    public Avatar userAvatar; // аватарка
 
-    public UserEntity(long id,
-                      @NotNull String name,
+    @ColumnInfo(name = "customerOrNot")
+    public int customerOrNot; // доставщик или нет
+
+    @ColumnInfo(name = "insideProfile")
+    private int insidePofile = 0; // в профиле или нет
+
+    public UserEntity(long userId,
+                      @NotNull String userName,
                       @NotNull Phone phone,
-                      @NotNull String mail,
-                      @NotNull String password,
-                      @NotNull Avatar avatar) {
-        this.id = id;
-        this.name = name;
+                      @NotNull String userMail,
+                      @NotNull String userPassword,
+                      @NotNull Avatar userAvatar,
+                      int customerOrNot) {
+        this.userId = userId;
+        this.userName = userName;
         this.phone = phone;
-        this.mail = mail;
-        this.password = password;
-        this.avatar = avatar;
+        this.userMail = userMail;
+        this.userPassword = userPassword;
+        this.userAvatar = userAvatar;
+        this.customerOrNot = customerOrNot;
     }
 
-    public UserEntity(@NotNull String name,
+    public UserEntity(@NotNull String userName,
                       @NotNull Phone phone,
-                      @NotNull String mail,
-                      @NotNull String password,
-                      @NotNull Avatar avatar) {
-        this.name = name;
+                      @NotNull String userMail,
+                      @NotNull String userPassword,
+                      @NotNull Avatar userAvatar,
+                      int customerOrNot) {
+        this.userName = userName;
         this.phone = phone;
-        this.mail = mail;
-        this.password = password;
-        this.avatar = avatar;
+        this.userMail = userMail;
+        this.userPassword = userPassword;
+        this.userAvatar = userAvatar;
+        this.customerOrNot = customerOrNot;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
-    public void setName(@NotNull String name) {
-        this.name = name;
+    public void setUserName(@NotNull String userName) {
+        this.userName = userName;
     }
 
     public void setPhone(@NotNull Phone phone) {
         this.phone = phone;
     }
 
-    public void setMail(@NotNull String mail) {
-        this.mail = mail;
+    public void setUserMail(@NotNull String userMail) {
+        this.userMail = userMail;
     }
 
-    public void setPassword(@NotNull String password) {
-        this.password = password;
+    public void setUserPassword(@NotNull String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public void setAvatar(@NotNull Avatar avatar) {
-        this.avatar = avatar;
+    public void setUserAvatar(@NotNull Avatar userAvatar) {
+        this.userAvatar = userAvatar;
     }
 
-    public long getId() {
-        return id;
+    public void setCustomerOrNot(int customerOrNot) {
+        this.customerOrNot = customerOrNot;
+    }
+
+    public void setInsidePofile(int insidePofile) {
+        this.insidePofile = insidePofile;
+    }
+
+    public long getUserId() {
+        return userId;
     }
 
     @NotNull
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
     @NotNull
@@ -101,17 +119,25 @@ public class UserEntity {
     }
 
     @NotNull
-    public String getMail() {
-        return mail;
+    public String getUserMail() {
+        return userMail;
     }
 
     @NotNull
-    public String getPassword() {
-        return password;
+    public String getUserPassword() {
+        return userPassword;
     }
 
     @NotNull
-    public Avatar getAvatar() {
-        return avatar;
+    public Avatar getUserAvatar() {
+        return userAvatar;
+    }
+
+    public int getCustomerOrNot() {
+        return customerOrNot;
+    }
+
+    public int getInsidePofile() {
+        return insidePofile;
     }
 }

@@ -12,8 +12,8 @@ public class PhoneMapper {
 
         try {
             phone = new Phone(
-                    jsonObject.getLong("id"),
-                    jsonObject.getString("number")
+                    jsonObject.getLong("phoneId"),
+                    jsonObject.getString("phoneNumber")
             );
         } catch (JSONException e) {
             e.printStackTrace();
@@ -22,7 +22,7 @@ public class PhoneMapper {
         return phone;
     }
 
-    // получение аватарки из json
+    // получение телефона из json
     public static Phone phoneFromUserJson(JSONObject jsonObject) throws JSONException {
         Phone phone = null;
 

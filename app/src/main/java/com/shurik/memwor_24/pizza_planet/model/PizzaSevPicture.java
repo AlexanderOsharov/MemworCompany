@@ -1,13 +1,14 @@
 package com.shurik.memwor_24.pizza_planet.model;
 
+// класс картинки пиццы
 public class PizzaSevPicture {
 
-    private int id;
+    private int pizzaPicId; // id
 
-    private String pizzaUri;
+    private String pizzaUri; // uri картинки
 
-    public PizzaSevPicture(int id, String pizzaUri) {
-        this.id = id;
+    public PizzaSevPicture(int pizzaPicId, String pizzaUri) {
+        this.pizzaPicId = pizzaPicId;
         this.pizzaUri = pizzaUri;
     }
 
@@ -16,7 +17,7 @@ public class PizzaSevPicture {
     }
 
     public int getId() {
-        return id;
+        return pizzaPicId;
     }
 
     public String getPizzaUri() {

@@ -19,7 +19,7 @@ public class AvatarMapper {
 
             // "вынимаем" аватарку из json
             avatar = new Avatar(
-                    jsonObject.getLong("id"),
+                    jsonObject.getLong("avatarId"),
                     jsonObject.getString("avatarUri"),
                     phone);
 

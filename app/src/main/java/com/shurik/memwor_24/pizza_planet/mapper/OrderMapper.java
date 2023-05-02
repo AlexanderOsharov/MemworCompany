@@ -11,15 +11,17 @@ public class OrderMapper {
 
         try {
             order = new OrderEntity(
-                    jsonObject.getLong("id"), // id -шник
+                    jsonObject.getLong("orderId"), // id -шник
                     UserMapper.userFromJson(jsonObject), // заказчик
                     jsonObject.getString("customerAddress"), // адресс заказчика
                     PizzaListMapper.pizzaListFromJson(jsonObject), // список пицц
-                    jsonObject.getInt("completed") // завершен или нет
+                    jsonObject.getInt("completed") // завершен, в процессе, нет
             );
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return order;
     }
 }

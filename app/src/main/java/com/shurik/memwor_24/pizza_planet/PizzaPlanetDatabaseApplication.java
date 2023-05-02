@@ -11,13 +11,13 @@ public class PizzaPlanetDatabaseApplication extends Application {
 
     private static PizzaPlanetDatabaseApplication instance;
 
-    public static PizzaPlanetDatabaseApplication getInstance() {
-        return instance;
-    }
-
     private static UserDatabase userDatabase;
 
     private static OrderDatabase orderDatabase;
+
+    public static PizzaPlanetDatabaseApplication getInstance() {
+        return instance;
+    }
 
     @Override
     public void onCreate() {
