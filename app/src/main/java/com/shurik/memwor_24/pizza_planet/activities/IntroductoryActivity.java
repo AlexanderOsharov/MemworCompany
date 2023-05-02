@@ -16,10 +16,15 @@ public class IntroductoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // полноэкранный режим
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         binding = ActivityIntroductoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // создаем и запускаем поток
         Thread thread = new Thread(new MyThread());
         thread.start();
     }
@@ -32,7 +37,7 @@ public class IntroductoryActivity extends AppCompatActivity {
         finish();
     }
 
-    // поток - по прошествии 10 сек - переход
+    // поток - по прошествии 0.4 сек - переход
     class MyThread implements Runnable {
 
         @Override

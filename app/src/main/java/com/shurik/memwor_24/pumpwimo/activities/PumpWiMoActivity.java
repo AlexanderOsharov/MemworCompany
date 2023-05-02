@@ -10,12 +10,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.shurik.memwor_24.BaseActivity;
 import com.shurik.memwor_24.R;
 import com.shurik.memwor_24.databinding.PumpwimoMainBinding;
 import com.shurik.memwor_24.pumpwimo.adapters.ViewPagerAdapter;
 
-public class PumpWiMoActivity extends BaseActivity {
+public class PumpWiMoActivity extends AppCompatActivity {
 
     PumpwimoMainBinding binding;
 
@@ -125,10 +124,5 @@ public class PumpWiMoActivity extends BaseActivity {
     {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-    }
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.pumpwimo_main;
     }
 }

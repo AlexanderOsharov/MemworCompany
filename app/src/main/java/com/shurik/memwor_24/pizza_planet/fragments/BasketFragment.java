@@ -29,7 +29,7 @@ public class BasketFragment extends Fragment {
     private RecyclerView recyclerView;
 
     public static BasketAdapter basketAdapter;
-    LinearLayoutManager layoutManager;
+    private LinearLayoutManager layoutManager;
 
     private PizzaDatabase database;
     public static PizzaDAO pizzaDao;
@@ -40,8 +40,8 @@ public class BasketFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         binding = FragmentBasketBinding.inflate(inflater, container, false);
+
         recyclerView = binding.pizzaRecyclerview;
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), layoutManager.getOrientation()));
@@ -58,10 +58,10 @@ public class BasketFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Создать и получить доступ к базе данных
+        // Создаем и получаем доступ к базе данных
         database = PizzaDatabase.getInstance(getActivity());
 
-        // Получить доступ к Dao
+        // получаем и сохраняем Dao
         pizzaDao = database.pizzaDao();
 
         // Получить все пиццы из базы данных и добавить их в адаптер
@@ -69,12 +69,12 @@ public class BasketFragment extends Fragment {
             List<PizzaEntity> pizzaEntities = pizzaDao.getAllPizzas();
             for (PizzaEntity pizzaEntity : pizzaEntities) {
                 Pizza pizza = new Pizza(
-                pizzaEntity.getId(),
-                pizzaEntity.getTitle(),
-                pizzaEntity.getDesciption(),
-                pizzaEntity.getPic(),
-                pizzaEntity.getFee(),
-                pizzaEntity.getQuantity());
+                        pizzaEntity.getId(),
+                        pizzaEntity.getTitle(),
+                        pizzaEntity.getDesciption(),
+                        pizzaEntity.getPic(),
+                        pizzaEntity.getFee(),
+                        pizzaEntity.getQuantity());
                 getActivity().runOnUiThread(() -> basketAdapter.addPizza(pizza));
             }
         }).start();

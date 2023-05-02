@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/supplier_background"
-    tools:context=".fragments.SupplierFragment">
+    tools:context=".pizza_planet.fragments.SupplierFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/user_recyclerview"
@@ -16,5 +16,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/supplier_item" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

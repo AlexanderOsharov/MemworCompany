@@ -9,11 +9,6 @@ import androidx.fragment.app.Fragment;
 
 import com.shurik.memwor_24.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link BlankFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class BlankFragment extends Fragment {
 
     @Override

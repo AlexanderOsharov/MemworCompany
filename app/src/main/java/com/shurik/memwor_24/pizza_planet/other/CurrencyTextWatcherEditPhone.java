@@ -3,8 +3,8 @@ package com.shurik.memwor_24.pizza_planet.other;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-// форматирование editText
-public class CurrencyTextWatcher implements TextWatcher {
+// класс для "рефакторинга" editPhone в регистрации пользователя (UserFragment)
+public class CurrencyTextWatcherEditPhone implements TextWatcher {
 
     private StringBuilder builder = new StringBuilder();
     private boolean ignore;
@@ -21,7 +21,7 @@ public class CurrencyTextWatcher implements TextWatcher {
     public void onTextChanged(CharSequence s, int start, int before, int count) {
     }
 
-    // вызывается после изменения текста
+    // вызывается после изменения текста в editText
     // Editable - класс, который позволяет изменять текст внутри editText
     @Override
     public void afterTextChanged(Editable s) {
@@ -68,12 +68,13 @@ public class CurrencyTextWatcher implements TextWatcher {
         return c >= '0' && c <= '9';
     }
 
-    // шаблон
+    // шаблоны
     private String getTemplate(String text) {
         if (text.startsWith("7")) {
             return "+X (XXX) XXX-XX-XX";
+            // Россия - пример: +7 (897) 156-56-01
+            // Казахстан - пример: +7 (897) 156-56-01
         }
-        return "+XXX (XXX) XX-XX-XX";
+        return "+7 (XXX) XXX-XX-XX";
     }
-
 }

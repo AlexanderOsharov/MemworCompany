@@ -29,7 +29,10 @@ public class User { // класс нашего пользователя
     @NotNull
     public String phone;
 
-    public User(@NonNull String email, @NonNull String password, @NonNull String phone, @NonNull String nickName) {
+    public User(@NonNull String email,
+                @NonNull String password,
+                @NonNull String phone,
+                @NonNull String nickName) {
         this.email = email;
         this.password = password;
         this.phone = phone;

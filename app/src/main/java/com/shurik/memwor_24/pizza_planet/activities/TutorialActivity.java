@@ -22,6 +22,11 @@ public class TutorialActivity extends AppCompatActivity {
 
     private ViewPagerAdapter viewPagerAdapter;
 
+    /**
+     * переменная, которая хранит 2 значения
+     * 1 - если пользователь не находится на последнем слайде tutorial - a
+     * 2 - если пользователь находится на последнем слайде tutorial - a
+     */
     public static int whatIsIt;
 
     @Override
@@ -33,6 +38,7 @@ public class TutorialActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        // кнопочка "Назад"
         binding.back.setVisibility(View.INVISIBLE);
         binding.back.setOnClickListener(v -> {
             if (getItem(0) > 0) {
@@ -40,6 +46,7 @@ public class TutorialActivity extends AppCompatActivity {
             }
         });
 
+        // кнопочка "Дальше"
         binding.next.setOnClickListener(v -> {
             if (getItem(0) < 3) {
                 binding.slideViewPager.setCurrentItem(getItem(1), true);
@@ -51,9 +58,9 @@ public class TutorialActivity extends AppCompatActivity {
             }
         });
 
+        // кнопочка "Пропустить"
         binding.skip.setOnClickListener(v -> {
             Intent intent = new Intent(TutorialActivity.this, PizzaPlanetActivity.class);
-
             if (getItem(0) == 3) {
                 whatIsIt = 2;
                 startActivity(intent);
@@ -66,7 +73,6 @@ public class TutorialActivity extends AppCompatActivity {
         });
 
         viewPagerAdapter = new ViewPagerAdapter(this);
-
         binding.slideViewPager.setAdapter(viewPagerAdapter);
 
         setUpIndicator(0);
@@ -112,12 +118,12 @@ public class TutorialActivity extends AppCompatActivity {
         }
     };
 
-    // 1.Почему мы прибавляем i?
+    // метод дл определения номера слайда, на котором находится пользователь
     private int getItem(int i) {
         return binding.slideViewPager.getCurrentItem() + i;
     }
 }
 
-/**
- * Сделать плавную анимацию для текста
+/*
+ * todo 1. Сделать плавную анимацию перехода для текста
  */

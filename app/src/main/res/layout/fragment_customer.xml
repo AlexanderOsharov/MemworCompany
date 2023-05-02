@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ecr_2"
-    tools:context=".activities.MainActivity">
+    tools:context=".pizza_planet.fragments.CustomerFragment">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -24,13 +24,13 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/hi_user"
-                app:cardElevation="15dp"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="350dp"
                 android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_margin="40dp"
                 android:elevation="20dp"
-                app:cardCornerRadius="20dp">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="15dp">
 
                 <TextView
                     android:id="@+id/textView4"
@@ -65,13 +65,13 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="30dp"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="32dp"
                 app:cardCornerRadius="30dp"
-                app:cardElevation="15dp"
-                android:layout_height="170dp">
+                app:cardElevation="15dp">
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/viewPager2"
@@ -104,8 +104,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="38dp"
-                android:text="Пиццы"
                 android:layout_marginTop="3dp"
+                android:text="Пиццы"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -116,14 +116,14 @@
                 android:id="@+id/pizza_recyclerview_customer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/popular"
                 android:layout_marginTop="3dp"
                 android:orientation="horizontal"
-                tools:listitem="@layout/pizza_item"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/popular"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/pizza_item" />
 
         </LinearLayout>
     </ScrollView>

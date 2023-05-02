@@ -1,63 +1,55 @@
 package com.shurik.memwor_24.pizza_planet.product_database;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.NotNull;
+
 @Entity(tableName = "pizza")
 public class PizzaEntity {
+    // класс пиццы
 
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    // название пиццы
-    private String title;
+    @ColumnInfo(name = "title")
+    @NotNull
+    private String title; // название пиццы
 
-    // описание
-    private String desciption;
+    @ColumnInfo(name = "description")
+    @NotNull
+    private String desciption; // описание пиццы
 
-    // изображение
-    private String pic;
+    @ColumnInfo(name = "pic")
+    @NotNull
+    private String pic; // изображение
 
-    // цена
-    private String fee;
+    @ColumnInfo(name = "fee")
+    @NotNull
+    private String fee; // цена
 
-    // количество
-    private int quantity = 1;
+    @ColumnInfo(name = "quantity")
+    private int quantity = 1; // количество (по умолчанию - 1)
 
-    public String getTitle() {
-        return title;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(@NotNull String title) {
         this.title = title;
     }
 
-    public String getDesciption() {
-        return desciption;
-    }
-
-    public void setDesciption(String desciption) {
+    public void setDesciption(@NotNull String desciption) {
         this.desciption = desciption;
     }
 
-    public String getPic() {
-        return pic;
-    }
-
-    public void setPic(String pic) {
+    public void setPic(@NotNull String pic) {
         this.pic = pic;
     }
 
-    public String getFee() {
-        return fee;
-    }
-
-    public void setFee(String fee) {
+    public void setFee(@NotNull String fee) {
         this.fee = fee;
-    }
-
-    public int getQuantity() {
-        return quantity;
     }
 
     public void setQuantity(int quantity) {
@@ -68,8 +60,27 @@ public class PizzaEntity {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    @NotNull
+    public String getTitle() {
+        return title;
+    }
+
+    @NotNull
+    public String getDesciption() {
+        return desciption;
+    }
+
+    @NotNull
+    public String getPic() {
+        return pic;
+    }
+
+    @NotNull
+    public String getFee() {
+        return fee;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 }
-

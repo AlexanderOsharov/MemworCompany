@@ -30,12 +30,10 @@ public class SupplierFragment extends Fragment {
     private LinearLayoutManager layoutManager;
 
     public SupplierFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // инициализация binding - а
         binding = FragmentSupplierBinding.inflate(inflater, container, false);
 
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
@@ -53,5 +51,4 @@ public class SupplierFragment extends Fragment {
 //        recyclerViewUser.setAdapter(userAdapter);
 
     }
-
 }

@@ -22,5 +22,4 @@ public interface PizzaDAO {
 
     @Update
     void update(PizzaEntity pizza);
-
 }

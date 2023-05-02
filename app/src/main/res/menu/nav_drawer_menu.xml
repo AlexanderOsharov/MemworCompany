@@ -2,21 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/memwor"
+            android:id="@+id/nav_memwor"
             android:icon="@drawable/memwor_logo"
-            android:title="Memwor" />
+            android:title="@string/memwor" />
         <item
-            android:id="@+id/browser"
+            android:id="@+id/nav_browser"
             android:icon="@drawable/browser_logo"
-            android:title="Browser" />
+            android:title="@string/browser" />
         <item
-            android:id="@+id/pumpwimo"
+            android:id="@+id/nav_pumpwimo"
             android:icon="@drawable/logo_inscrition"
-            android:title="PumpWiMo" />
+            android:title="@string/pumpwimo" />
         <item
-            android:id="@+id/pizza_planet"
+            android:id="@+id/nav_pizza_planet"
             android:icon="@drawable/pizza_icon"
-            android:title="PizzaPlanet" />
+            android:title="@string/pizzaplanet" />
         <!--TODO Добавить другие элементы меню сюда -->
     </group>
 </menu>
