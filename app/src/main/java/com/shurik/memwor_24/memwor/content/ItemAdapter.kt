@@ -16,6 +16,7 @@ class ItemAdapter(private var posts: MutableList<Post>) :
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val authorTextView: TextView = itemView.findViewById(R.id.authorTextView)
         val categoryTextView: TextView = itemView.findViewById(R.id.categoryTextView)
+//        val mediaViewPager: ViewPager2 = itemView.findViewById(R.id.mediaViewPager)
         val mediaViewPager: ViewPager2 = itemView.findViewById(R.id.mediaViewPager)
         val textTextView: TextView = itemView.findViewById(R.id.textTextView)
     }

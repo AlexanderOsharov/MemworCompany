@@ -31,20 +31,16 @@ class VkFragment : Fragment() {
     var btnSearch: Button? = null
     var dialog: Dialog? = null
     var mActivity: Activity? = this.activity
-    private var articles = ResponseViewer()
+
+    private var vkViewer = ResponseViewer()
 
     var vkPosts: MutableList<Post> = ArrayList()
     var vkDomains: MutableList<Domain> = ArrayList()
 
-    lateinit var adapter: ItemAdapter
+    //lateinit var adapter: ItemAdapter
 
     lateinit var mContext: Context
 
-
-
-    private val accessToken = Constants.ACCESS_TOKEN_VK
-    private val domaines = mutableListOf("ul1523")
-    private var contents: MutableList<Post> = ArrayList()
     private lateinit var recyclerView: RecyclerView
     private lateinit var binding: FragmentVkBinding
     @SuppressLint("NotifyDataSetChanged")
@@ -59,20 +55,22 @@ class VkFragment : Fragment() {
             vkDomains.forEach {
                 //Log.e("DOMAINS VK", it.domain + it.platform)
             }
-            articles.vkConfigureRetrofit()
+            Log.e("VkFragment domain", "success")
+            vkViewer.vkConfigureRetrofit()
         }
+
 
         mContext= requireContext()
         swipeRefreshLayout = view?.findViewById<SwipeRefreshLayout>(R.id.swipeRefresh)
 
-        articles.getVkInfo()
+        vkViewer.getVkInfo()
 
         etQuery = view?.findViewById<EditText>(R.id.etQuery)
         btnSearch = view?.findViewById<Button>(R.id.btnSearch)
         dialog = mActivity?.let { Dialog(it) }
 
         swipeRefreshLayout?.setOnRefreshListener {
-            articles.getVkInfo()
+            vkViewer.getVkInfo()
             swipeRefreshLayout?.isRefreshing = false
         }
         //Какая-нибудь заглушка
@@ -83,15 +81,16 @@ class VkFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView?.layoutManager = LinearLayoutManager(mActivity)
+        recyclerView?.adapter = adapter
         MemworViewModel.vkPostsLiveData.observe(viewLifecycleOwner) {
             vkPosts = it
 
-            vkPosts.forEach {
-                Log.e("FROM VK FRAGMENT", it.text + " " + it.author + " " + it.category + " " + it.images.toString())
-            }
-            adapter = ItemAdapter(vkPosts)
-            recyclerView?.layoutManager = LinearLayoutManager(mActivity)
-            recyclerView?.adapter = adapter
+            //vkPosts.forEach {
+                //Log.e("FROM VK FRAGMENT", it.text + " " + it.author + " " + it.category + " " + it.images.toString())
+           // }
+            Log.e("VkFragment posts", "success")
+//            adapter.addPosts(vkPosts)
             //recyclerView?.layoutManager = LinearLayoutManager(mActivity)
             val ad = recyclerView?.adapter
             println(ad)
@@ -100,6 +99,7 @@ class VkFragment : Fragment() {
 
     companion object {
         @JvmStatic
+        var adapter: ItemAdapter = ItemAdapter(ArrayList<Post>())
         fun newInstance() = VkFragment()
     }
 }

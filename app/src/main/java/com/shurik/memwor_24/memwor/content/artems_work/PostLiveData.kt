@@ -5,7 +5,7 @@ import com.shurik.memwor_24.memwor.content.Post
 
 class PostLiveData: LiveData<MutableList<Post>>() {
 
-    fun setValueToVkPosts(list:MutableList<Post>){
+    fun setValueToPosts(list:MutableList<Post>){
         postValue(list)
     }
 

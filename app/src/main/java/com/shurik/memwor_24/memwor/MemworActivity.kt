@@ -15,7 +15,7 @@ import com.shurik.memwor_24.memwor.fragments.RedditFragment
 import com.shurik.memwor_24.memwor.fragments.TelegramFragment
 import com.shurik.memwor_24.browser.fragments_all.adapter.ViewPagerAdapter
 
-class MemworActivity : DopActivity() {
+class MemworActivity : AppCompatActivity() {
     private lateinit var binding: MemworMainBinding
 
     private fun Context.startActivityWithAnimation(intent: Intent) {

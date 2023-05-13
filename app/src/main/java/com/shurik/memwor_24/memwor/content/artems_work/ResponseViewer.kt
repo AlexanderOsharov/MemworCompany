@@ -2,13 +2,19 @@ package com.shurik.memwor_24.memwor.content.artems_work
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.google.gson.Gson
+import com.shurik.memwor_22.fragments.VkFragment
+import com.shurik.memwor_24.memwor.api.module_reddit.RedditAPI
 import com.shurik.memwor_24.memwor.content.artems_work.db.MemworDatabaseManager
 
-import com.shurik.memwor_24.memwor.content.artems_work.utils.Constants
 import com.shurik.memwor_24.memwor.content.artems_work.quest.GetVKJsonResponse
 import com.shurik.memwor_24.memwor.content.artems_work.quest.QuestApi
 import com.shurik.memwor_24.memwor.content.Post
-
+import com.shurik.memwor_24.memwor.content.module_reddit.ChildData
+import com.shurik.memwor_24.memwor.content.module_reddit.RedditResponse
+import com.shurik.memwor_24.memwor.Constants
+import com.shurik.memwor_24.memwor.content.ItemAdapter
+import com.shurik.memwor_24.memwor.content.artems_work.quest.GetRedditJsonResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.*
@@ -17,6 +23,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.IOException
 
 import kotlin.collections.ArrayList
 
@@ -26,10 +33,9 @@ class ResponseViewer (): ViewModel(){
     //TODO(IMPORT DOMAINS LIST FROM ACTIVITY)
     private val dbManager = MemworDatabaseManager()
     var vkResList: MutableList<Post> = ArrayList()
+    var redditResList: MutableList<Post> = ArrayList()
     //var tgDomainsList: MutableList<MutableList<String>> = ArrayList()
     //var redditDomainsList: MutableList<MutableList<String>> = ArrayList()
-
-    private val constants = Constants()
 
     private lateinit var vkQuestApi: QuestApi
     private lateinit var redQuestApi: QuestApi
@@ -64,6 +70,9 @@ class ResponseViewer (): ViewModel(){
     fun getVkInfo() {
         dbManager.getVkDomains()
     }
+    fun getRedditInfo(){
+        dbManager.getRedditDomains()
+    }
 
     fun vkConfigureRetrofit(){
         val vkCoroutineScope = CoroutineScope(Dispatchers.IO)
@@ -74,44 +83,50 @@ class ResponseViewer (): ViewModel(){
                     //delay(Random().nextInt(3000).toLong())
                     vkQuestApi.getVkJson(
                         domain = it.domain,
-                        access_token = constants.ACCESS_TOKEN,
+                        access_token = Constants.ACCESS_TOKEN_VK,
                         count = 100,
-                        ver = constants.API_VERSION
+                        ver = Constants.API_VERSION
                     )
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({ it1 ->
+                            Log.e("Retrofit subscribe", "success")
                             vkFindUrls(it1, it)
                         }, {
                             println(it.stackTrace.toString())
                         })
                 }
             }?.awaitAll()
-            MemworViewModel.vkPostsLiveData.setValueToVkPosts(vkResList)
+            Log.e("Retrofit awaitall", "success")
+            MemworViewModel.vkPostsLiveData.setValueToPosts(vkResList)
         }
     }
 
     fun redditConfigureRetrofit() {
 
-//        val redCoroutineScope = CoroutineScope(Dispatchers.IO)
-//        redCoroutineScope.launch {
-//            MemworViewModel.redditDomainsLiveData.value?.map {
-//                delay(2000)
-//                redCoroutineScope.async {
+        val redditCoroutineScope = CoroutineScope(Dispatchers.IO)
+        redditCoroutineScope.launch {
+            MemworViewModel.redditDomainsLiveData.value?.map {
+                delay(5000)
+                redditCoroutineScope.async {
                     //delay(Random().nextInt(3000).toLong())
-        redQuestApi.getRedditJson()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ it1 ->
-                redditFindUrls(it1)
-            }, {
-                println(it.stackTrace.toString())
-            })
+                    redQuestApi.getRedditJson(
+                        domain = it.domain,
+                        reddit_token = Constants.ACCESS_TOKEN_REDDIT
+                    )
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe({ it1 ->
+                            redditFindUrls(it1, it)
+                        }, {
+                            println(it.stackTrace.toString())
+                        })
+                }
+            }?.awaitAll()
+            Log.e("Retrofit await all","Success retrofit")
+            MemworViewModel.redditPostsLiveData.setValueToPosts(redditResList)
+        }
     }
-//            }?.awaitAll()
-//            MemworViewModel.vkPostsLiveData.setValueToVkPosts(vkResList)
-//        }
-//    }
 
     private fun telegramConfigureRetrofit() {
 //
@@ -145,9 +160,6 @@ class ResponseViewer (): ViewModel(){
     }
 
     private fun vkFindUrls(res: GetVKJsonResponse, domain: Domain) {
-        //TODO(Add return statement)
-
-        //val _vkResList: MutableList<Post> = ArrayList()
         res.vkResponse?.items?.forEach {
             if (it.marked_as_ads == 0) {
 
@@ -164,50 +176,58 @@ class ResponseViewer (): ViewModel(){
                 post.images = inter_list
                 if(!post.images.isNullOrEmpty()){
                     vkResList.add(post)
-//                    vkResList.forEach {
-//                        Log.e("FROM RP VIEWER", it.text + " " + it.author + " " + it.category + " " + it.images.toString())
-//                    }
+                    if (vkResList.size % 10 == 0) VkFragment.adapter.addPosts(vkResList)
+
                 }
+
             }
         }
-        //MainActivity.vkPostsLiveData.addValueToVkPost(post)
     }
 
-    //TODO(Replace string with reddit data class response)
-    private fun redditFindUrls(res: GetVKJsonResponse) {
+    private fun redditFindUrls(res: GetRedditJsonResponse, domain: Domain) {
+        res.data?.children?.forEach {
 
-        //TODO(Add to QuestApi and data.remote.quest reddit methods)
-        //TODO(Add return statement)
+            val post = Post()
+            post.author = domain.domain
+            post.category = domain.category
 
+            //post.videos = extractVideos(it.data)
+            post.text = it.data.selftext
 
-        Log.d("reddit success", "AAAAAAAAAAAAAAAAAAAAAA")
-        //        res.redditResponse?.items?.forEach {
-        //            if (it.marked_as_ads == 0) {
-        //                val inter_list: MutableList<String> = ArrayList()
-        //
-        //                // Checking for empty text
-        //
-        //                inter_list.add(it.text)
-        //
-        //
-        //                // Adding existing urls to intermediate list
-        //                it.attachments?.forEach {
-        //                      if (it.type == "photo"){
-        //                    it?.photo?.sizes?.last()?.url?.let { it1 -> inter_list.add(it1) }
-        //                      }
-        //
-        //                }
-        //
-        //                // checking for empty intermediate list
-        //                if (!inter_list.isNullOrEmpty()) {
-        //                    res_list.add(inter_list)
-        //                }
-        //            }
-        //        }
+            val inter_list: MutableList<String> = ArrayList()
+            it.data.preview?.images?.forEach {it1->
+                inter_list.add(it1.source.url)
+            }
+            post.images = inter_list
 
-        // debug output (comment if not necessary)
-        //Log.e("TAAAAG", res_list.toString())
+            //if(!post.images.isNullOrEmpty()){
+            redditResList.add(post)
+            //}
+
+        }
+
     }
+    private fun extractImages(data: ChildData): MutableList<String> {
+        val images: MutableList<String> = mutableListOf()
+
+        data.preview?.let { preview ->
+            preview.images.forEach { image ->
+                images.add(image.source.url)
+            }
+        }
+
+        return images
+    }
+
+    private fun extractVideos(data: ChildData): MutableList<String> {
+        val videos: MutableList<String> = mutableListOf()
+
+        // Здесь нам нужно будет наполнить список видео на основе данных, так как Reddit не предоставляет такую информацию,
+        // то, возможно, нам придется найти другой способ получения видео из постов.
+
+        return videos
+    }
+
 
     //TODO(Replace string with telegram data class response)
      fun telegramFindUrls(res: String) {

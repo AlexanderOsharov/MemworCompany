@@ -29,13 +29,13 @@ class MemworDatabaseManager {
     }
 
     fun getVkDomains() {
-        val coroutineScope = CoroutineScope(Dispatchers.IO)
-        coroutineScope.launch{
+        val vkCoroutineScope = CoroutineScope(Dispatchers.IO)
+        vkCoroutineScope.launch {
             db.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     var _vkData: MutableList<Domain> = ArrayList()
                     //if (vkData.size > 0) vkData.clear()
-                    for (ds : DataSnapshot in dataSnapshot.getChildren()){
+                    for (ds: DataSnapshot in dataSnapshot.getChildren()) {
                         val community: Community? = ds.getValue(Community::class.java)
                         val domain = Domain()
                         if (community != null) {
@@ -44,13 +44,16 @@ class MemworDatabaseManager {
                             community.name?.let { domain.name = it }
                             community.platform?.let { domain.platform = it }
                         }
-                        if(!domain.name.isNullOrEmpty() || !domain.domain.isNullOrEmpty() || !domain.category.isNullOrEmpty() || !domain.platform.isNullOrEmpty() ){
-                            _vkData.add(domain)
+                        if (!domain.name.isNullOrEmpty() || !domain.domain.isNullOrEmpty() || !domain.category.isNullOrEmpty() || !domain.platform.isNullOrEmpty()) {
+                            if (domain.platform == "vk") {
+                                _vkData.add(domain)
+                            }
                         }
                     }
                     //Log.e("WITH LOVE FROM DB", _vkData.toString())
                     MemworViewModel.vkDomainsLiveData.setValueToVkDomains(_vkData)
                 }
+
                 //Log.e("SUCCESS DATABASE TAG", _vkData.toString())
                 override fun onCancelled(error: DatabaseError) {
                     // Failed to read value
@@ -59,10 +62,48 @@ class MemworDatabaseManager {
             })
         }
 
+    }
+    fun getRedditDomains() {
+        val redditCoroutineScope = CoroutineScope(Dispatchers.IO)
+        redditCoroutineScope.launch {
+            db.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    var _redditData: MutableList<Domain> = ArrayList()
+                    //if (vkData.size > 0) vkData.clear()
+                    for (ds: DataSnapshot in dataSnapshot.getChildren()) {
+                        val community: Community? = ds.getValue(Community::class.java)
+                        val domain = Domain()
+                        if (community != null) {
+                            community.category?.let { domain.category = it }
+                            community.domain?.let { domain.domain = it }
+                            community.name?.let { domain.name = it }
+                            community.platform?.let { domain.platform = it }
+                        }
+                        if (!domain.name.isNullOrEmpty() || !domain.domain.isNullOrEmpty() || !domain.category.isNullOrEmpty() || !domain.platform.isNullOrEmpty()) {
+                            if (domain.platform == "reddit") {
+                                Log.e("DATA", domain.domain)
+                                Log.e("DATABASE SUCCESS","Success")
+                                _redditData.add(domain)
+                            }
+                        }
+
+                    }
+                    //Log.e("WITH LOVE FROM DB", _vkData.toString())
+                    MemworViewModel.redditDomainsLiveData.setValueToVkDomains(_redditData)
+                }
+
+                //Log.e("SUCCESS DATABASE TAG", _vkData.toString())
+                override fun onCancelled(error: DatabaseError) {
+                    // Failed to read value
+                    Log.w("DATABASE ERROR TAG", "Failed to read value.", error.toException())
+                }
+            })
+        }
+    }
         //result.join()
         //Log.e("SUCCEED res DB", res.toString())
         //Log.e("SUCCEED vkData DB", vkData.toString())
-    }
+
 
 
 
