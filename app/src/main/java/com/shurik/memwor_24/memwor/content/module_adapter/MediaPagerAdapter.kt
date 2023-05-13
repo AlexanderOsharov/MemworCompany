@@ -1,5 +1,6 @@
 package com.shurik.memwor_24.memwor.content.module_adapter
 
+import android.graphics.Matrix
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -10,6 +11,7 @@ import android.widget.VideoView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.shurik.memwor_24.R
+import kotlinx.android.synthetic.main.media_page_item.view.*
 
 class MediaPagerAdapter(private val images: MutableList<String>, private val videos: MutableList<String>) :
     RecyclerView.Adapter<MediaPagerAdapter.MediaViewHolder>() {
@@ -36,13 +38,13 @@ class MediaPagerAdapter(private val images: MutableList<String>, private val vid
             // Добавление обработчиков событий нажатия и отпускания для imageView
             holder.imageView.setOnTouchListener { _, event ->
                 when (event.action) {
-                    MotionEvent.ACTION_DOWN -> scaleViewUp(holder.imageView)
+                    MotionEvent.ACTION_DOWN -> scaleViewUp(holder.itemView)
                     MotionEvent.ACTION_UP,
-                    MotionEvent.ACTION_CANCEL -> scaleViewDown(holder.imageView)
+                    MotionEvent.ACTION_CANCEL -> scaleViewDown(holder.itemView)
                 }
                 true
             }
-        } else {
+        } else if (position - images.size < videos.size) {
             holder.imageView.visibility = View.GONE
             holder.videoView.visibility = View.VISIBLE
             val videoPosition = position - images.size
@@ -67,12 +69,25 @@ class MediaPagerAdapter(private val images: MutableList<String>, private val vid
 
 
     private fun scaleViewUp(view: View) {
-        view.animate().scaleX(1.5f).scaleY(1.5f).setDuration(200).start()
+        if (view is ImageView) {
+            val matrix = Matrix(view.imageMatrix)
+            matrix.setScale(1.5f, 1.5f, view.width / 2f, view.height / 2f)
+            view.imageMatrix = matrix
+            view.invalidate()
+        }
+        else view.animate().scaleX(1.5f).scaleY(1.5f).setDuration(200).start()
     }
 
     private fun scaleViewDown(view: View) {
-        view.animate().scaleX(1f).scaleY(1f).setDuration(200).start()
+        if (view is ImageView) {
+            val matrix = Matrix(view.imageMatrix)
+            matrix.setScale(1f, 1f, view.width / 2f, view.height / 2f)
+            view.imageMatrix = matrix
+            view.invalidate()
+        }
+        else view.animate().scaleX(1f).scaleY(1f).setDuration(200).start()
     }
+
 
     override fun getItemCount(): Int {
         return images.size + videos.size

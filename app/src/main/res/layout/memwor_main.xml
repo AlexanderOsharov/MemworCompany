@@ -49,12 +49,12 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- Add the NavigationView here -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/nav_drawer_menu"
-        tools:ignore="MissingConstraints" />
+        app:menu="@menu/sidebar_menu" />
+
 </androidx.drawerlayout.widget.DrawerLayout>

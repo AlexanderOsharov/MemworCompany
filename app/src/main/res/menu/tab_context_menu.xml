@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_edit_tab"
+        android:title="Редактировать вкладку" />
+    <item
+        android:id="@+id/action_remove_tab"
+        android:title="Удалить вкладку" />
+</menu>

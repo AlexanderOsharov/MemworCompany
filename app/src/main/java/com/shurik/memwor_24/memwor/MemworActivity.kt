@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import com.google.android.material.tabs.TabLayoutMediator
 import com.shurik.memwor_22.fragments.VkFragment
 import com.shurik.memwor_24.DopActivity
@@ -17,6 +19,7 @@ import com.shurik.memwor_24.browser.fragments_all.adapter.ViewPagerAdapter
 
 class MemworActivity : AppCompatActivity() {
     private lateinit var binding: MemworMainBinding
+    private lateinit var toggle: ActionBarDrawerToggle
 
     private fun Context.startActivityWithAnimation(intent: Intent) {
         startActivity(intent)
@@ -40,6 +43,7 @@ class MemworActivity : AppCompatActivity() {
         "Reddit",
         "TikTok",
     )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = MemworMainBinding.inflate(layoutInflater)
@@ -66,6 +70,28 @@ class MemworActivity : AppCompatActivity() {
                 // Действия при выключении тогла
             }
         }*/
+
+        val drawerLayout = binding.drawerLayout
+        val navigationView = binding.navigationView
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.firstActivity -> {
+                    startActivityWithAnimation(Intent(this, BrowserActivity::class.java))
+                }
+                R.id.secondActivity -> {
+                    startActivityWithAnimation(Intent(this, BrowserActivity::class.java))
+                }
+                // Add more menu items handling...
+            }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
+        }
+
+        // Add the toggle action for the drawer
+        setSupportActionBar(binding.toolBar2)
+        toggle = ActionBarDrawerToggle(this, drawerLayout, binding.toolBar2, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
 
         val adapter = ViewPagerAdapter(this, fragList) // создаем адаптер и передаем список фрагментов
         binding.vp23.adapter = adapter // устанавливаем адаптер для ViewPager2

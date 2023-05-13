@@ -16,7 +16,6 @@ class ItemAdapter(private var posts: MutableList<Post>) :
     class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val authorTextView: TextView = itemView.findViewById(R.id.authorTextView)
         val categoryTextView: TextView = itemView.findViewById(R.id.categoryTextView)
-//        val mediaViewPager: ViewPager2 = itemView.findViewById(R.id.mediaViewPager)
         val mediaViewPager: ViewPager2 = itemView.findViewById(R.id.mediaViewPager)
         val textTextView: TextView = itemView.findViewById(R.id.textTextView)
     }
@@ -33,6 +32,9 @@ class ItemAdapter(private var posts: MutableList<Post>) :
         holder.authorTextView.text = post.author
         holder.categoryTextView.text = post.category
         holder.textTextView.text = post.text
+
+        // Устанавливаем видимость textTextView
+        holder.textTextView.visibility = if (post.text.isNotEmpty()) View.VISIBLE else View.GONE
 
         val mediaPagerAdapter = MediaPagerAdapter(post.images, post.videos)
         holder.mediaViewPager.adapter = mediaPagerAdapter

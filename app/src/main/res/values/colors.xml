@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#2B2B28</color>
+    <color name="blue">#09001B</color>
     <color name="transparent">#002B2B28</color>
 
     <color name="switch_thumb_tint">#FF0000</color>
