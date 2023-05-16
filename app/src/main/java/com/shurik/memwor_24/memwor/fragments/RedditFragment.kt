@@ -32,7 +32,6 @@ class RedditFragment : Fragment() {
     private val accessToken = Constants.ACCESS_TOKEN_REDDIT
     //private var domaines = mutableListOf("mildlyinfuriating", "books", "aww")
     private lateinit var recyclerView: RecyclerView
-    private lateinit var itemAdapter: ItemAdapter
     private lateinit var binding: FragmentRedditBinding
 
     var mActivity: Activity? = this.activity
@@ -53,9 +52,7 @@ class RedditFragment : Fragment() {
         }
         redditViewer.getRedditInfo()
         binding = FragmentRedditBinding.inflate(inflater, container, false)
-        recyclerView = binding.recyclerView
-        recyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
 
         return binding.root
         //return inflater.inflate(R.layout.fragment_reddit, container, false)
@@ -64,15 +61,15 @@ class RedditFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        recyclerView = binding.recyclerView
+        recyclerView?.layoutManager = LinearLayoutManager(mActivity)
+        recyclerView?.adapter = itemAdapter
         MemworViewModel.redditPostsLiveData.observe(viewLifecycleOwner){
             redditPosts = it
 
             Log.e("Reddit fragment", redditPosts.toString())
-            itemAdapter = ItemAdapter(redditPosts)
+//            itemAdapter.addPosts(redditPosts)
 
-            recyclerView?.layoutManager = LinearLayoutManager(mActivity)
-            recyclerView?.adapter = itemAdapter
             //recyclerView?.layoutManager = LinearLayoutManager(mActivity)
             val ad = recyclerView?.adapter
             println(ad)
@@ -141,6 +138,7 @@ class RedditFragment : Fragment() {
 
     companion object {
         @JvmStatic
+        var itemAdapter: ItemAdapter = ItemAdapter(ArrayList<Post>())
         fun newInstance() = RedditFragment()
     }
 }

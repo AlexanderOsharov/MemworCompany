@@ -15,6 +15,7 @@ import com.shurik.memwor_24.memwor.content.module_reddit.RedditResponse
 import com.shurik.memwor_24.memwor.Constants
 import com.shurik.memwor_24.memwor.content.ItemAdapter
 import com.shurik.memwor_24.memwor.content.artems_work.quest.GetRedditJsonResponse
+import com.shurik.memwor_24.memwor.fragments.RedditFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.*
@@ -98,7 +99,7 @@ class ResponseViewer (): ViewModel(){
                 }
             }?.awaitAll()
             Log.e("Retrofit awaitall", "success")
-            MemworViewModel.vkPostsLiveData.setValueToPosts(vkResList)
+            //MemworViewModel.vkPostsLiveData.setValueToPosts(vkResList)
         }
     }
 
@@ -176,8 +177,16 @@ class ResponseViewer (): ViewModel(){
                 post.images = inter_list
                 if(!post.images.isNullOrEmpty()){
                     vkResList.add(post)
-                    if (vkResList.size % 10 == 0) VkFragment.adapter.addPosts(vkResList)
-
+                    if (vkResList.size % 10 == 0) {
+//                        VkFragment.adapter.addPosts(vkResList)
+                        val DataPosts: MutableList<Post> = ArrayList()
+                        var i: Int = vkResList.size
+                        while (i > vkResList.size - 10){
+                            DataPosts.add(vkResList[i - 1])
+                            i--
+                        }
+                        VkFragment.adapter.addPosts(DataPosts)
+                    }
                 }
 
             }
@@ -202,6 +211,17 @@ class ResponseViewer (): ViewModel(){
 
             //if(!post.images.isNullOrEmpty()){
             redditResList.add(post)
+            Log.e("Reddit source: ", post.images.toString())
+            if (redditResList.size % 10 == 0) {
+//                        RedditFragment.itemAdapter.addPosts(redditResList)
+                val DataPosts: MutableList<Post> = ArrayList()
+                var i: Int = redditResList.size
+                while (i > redditResList.size - 10){
+                    DataPosts.add(redditResList[i - 1])
+                    i--
+                }
+                RedditFragment.itemAdapter.addPosts(DataPosts)
+            }
             //}
 
         }

@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -95,6 +96,11 @@ class VkFragment : Fragment() {
             val ad = recyclerView?.adapter
             println(ad)
         }
+    }
+
+    fun toastMe(view: View){
+        var text: EditText = binding.etQuery
+//        if (text.text != "")
     }
 
     companion object {
