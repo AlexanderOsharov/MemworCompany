@@ -2,30 +2,26 @@ package com.shurik.memwor_24.memwor.fragments
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.ClipData.Item
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
-import com.shurik.memwor_24.R
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.shurik.memwor_24.memwor.Constants
-import com.shurik.memwor_24.memwor.content.module_reddit.RedditResponse
 import com.shurik.memwor_24.memwor.content.ItemAdapter
 import com.shurik.memwor_24.memwor.content.Post
-import com.shurik.memwor_24.memwor.content.module_reddit.ChildData
 import com.shurik.memwor_24.databinding.FragmentRedditBinding
-import com.shurik.memwor_24.memwor.api.module_reddit.RedditAPI
-import com.shurik.memwor_24.memwor.content.artems_work.Domain
-import com.shurik.memwor_24.memwor.content.artems_work.MemworViewModel
-import com.shurik.memwor_24.memwor.content.artems_work.ResponseViewer
+import com.shurik.memwor_24.memwor.content.logic.Domain
+import com.shurik.memwor_24.memwor.content.logic.MemworViewModel
+import com.shurik.memwor_24.memwor.content.logic.ResponseViewer
 import kotlinx.coroutines.*
-import java.io.IOException
 
 
 class RedditFragment : Fragment() {
@@ -39,6 +35,10 @@ class RedditFragment : Fragment() {
 
     var redditPosts: MutableList<Post> = ArrayList()
     var redditDomains: MutableList<Domain> = ArrayList()
+
+    var swipeRefreshLayout: SwipeRefreshLayout? = null
+    var etQuery: EditText? = null
+    var btnSearch: Button? = null
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +52,16 @@ class RedditFragment : Fragment() {
         }
         redditViewer.getRedditInfo()
         binding = FragmentRedditBinding.inflate(inflater, container, false)
+        swipeRefreshLayout = binding.swipeRefresh
 
+        etQuery = binding.etQuery
+        btnSearch = binding.btnSearch
+
+        swipeRefreshLayout?.setOnRefreshListener {
+            val newContentInfo = getRandomContent()
+            if (newContentInfo != null) itemAdapter.updatePosts(newContentInfo as MutableList<Post>)
+            swipeRefreshLayout?.isRefreshing = false
+        }
 
         return binding.root
         //return inflater.inflate(R.layout.fragment_reddit, container, false)
@@ -73,6 +82,9 @@ class RedditFragment : Fragment() {
             //recyclerView?.layoutManager = LinearLayoutManager(mActivity)
             val ad = recyclerView?.adapter
             println(ad)
+        }
+        binding.btnSearch.setOnClickListener {
+            SearchInformation()
         }
     }
 
@@ -134,7 +146,47 @@ class RedditFragment : Fragment() {
 //    }
 
 
+    fun SearchInformation() {
+        val inputText: EditText = binding.etQuery
+        if (inputText.text.isNullOrEmpty()) {
+            Toast.makeText(activity, "Введите запрос", Toast.LENGTH_SHORT).show()
+        } else {
+            val redditAnswerList: MutableList<Post> = ArrayList()
+            val redditContentList = MemworViewModel.redditPostsLiveData.value
+            val query = inputText.text.toString()
+            var i: Int? = redditContentList?.size?.minus(1)
+            if (i != null) {
+                while (i > -1) {
+                    val post = redditContentList?.get(i)
+                    if (post != null && (post.text.contains(query) || post.author.contains(query) || post.category.contains(query))) {
+                        redditAnswerList.add(post)
+                        if (redditAnswerList.size == 1) {
+                            itemAdapter.updatePosts(redditAnswerList)
+                        } else {
+                            itemAdapter.addPost(post)
+                        }
+                    }
+                    i--
+                }
+            }
+            if (redditAnswerList.isEmpty()) {
+                Toast.makeText(activity, "По вашему запросу ничего не найдено", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
+    fun getRandomContent(): List<Post>? {
+        val redditContentList = MemworViewModel.redditPostsLiveData.value
+        if (!redditContentList.isNullOrEmpty()) {
+            val shuffledList = redditContentList.shuffled()
+            if (shuffledList.size >= 10) {
+                return shuffledList.subList(0, 10)
+            } else {
+                return shuffledList.subList(0, shuffledList.size)
+            }
+        }
+        return null
+    }
 
     companion object {
         @JvmStatic

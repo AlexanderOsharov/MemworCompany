@@ -35,4 +35,10 @@ class CustomWebViewFragment : Fragment() {
         url?.let { binding.webView.loadUrl(url) }
         return binding.root
     }
+
+    fun newUrl(url: String){
+        binding.webView.settings.javaScriptEnabled = true
+        binding.webView.webViewClient = WebViewClient()
+        url?.let { binding.webView.loadUrl(url) }
+    }
 }

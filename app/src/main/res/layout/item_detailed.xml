@@ -64,7 +64,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Source"
+                                android:text="Category"
                                 android:textSize="15dp"
                                 android:fontFamily="@font/g_light"
                                 android:textColor="@color/white"
@@ -75,7 +75,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TITLE"
+                        android:text="Author"
                         android:padding="10dp"
                         android:textSize="20dp"
                         android:fontFamily="@font/g_bold"

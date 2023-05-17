@@ -1,4 +1,4 @@
-package com.shurik.memwor_24.memwor.content.artems_work
+package com.shurik.memwor_24.memwor.content.logic
 
 import androidx.lifecycle.LiveData
 

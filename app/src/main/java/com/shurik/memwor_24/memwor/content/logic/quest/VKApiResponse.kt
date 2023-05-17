@@ -1,4 +1,4 @@
-package com.shurik.memwor_24.memwor.content.artems_work.quest
+package com.shurik.memwor_24.memwor.content.logic.quest
 
 import com.google.gson.annotations.SerializedName
 

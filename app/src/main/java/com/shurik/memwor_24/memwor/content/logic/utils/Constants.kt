@@ -1,4 +1,4 @@
-package com.shurik.memwor_24.memwor.content.artems_work.utils
+package com.shurik.memwor_24.memwor.content.logic.utils
 
 class Constants {
     val ACCESS_TOKEN = "9fb466189fb466189fb46618449ca5442599fb49fb46618fce51db6b049cb80918bb78e"

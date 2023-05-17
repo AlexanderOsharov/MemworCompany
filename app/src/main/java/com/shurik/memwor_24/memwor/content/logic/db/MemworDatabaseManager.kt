@@ -1,10 +1,10 @@
-package com.shurik.memwor_24.memwor.content.artems_work.db
+package com.shurik.memwor_24.memwor.content.logic.db
 
 import android.util.Log
-import com.shurik.memwor_24.memwor.content.artems_work.utils.Constants
+import com.shurik.memwor_24.memwor.content.logic.utils.Constants
 import com.google.firebase.database.*
-import com.shurik.memwor_24.memwor.content.artems_work.Domain
-import com.shurik.memwor_24.memwor.content.artems_work.MemworViewModel
+import com.shurik.memwor_24.memwor.content.logic.Domain
+import com.shurik.memwor_24.memwor.content.logic.MemworViewModel
 import kotlinx.coroutines.*
 
 class MemworDatabaseManager {

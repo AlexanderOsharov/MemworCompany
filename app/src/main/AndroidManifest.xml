@@ -65,6 +65,16 @@
             </intent-filter>
         </activity>
 
+        <!--- TODO NewPlatform For Memwor -->
+        <activity
+            android:name=".memwor.content.new_platform.NewPlatformActivity"
+            android:exported="false"></activity>
+
+        <!--- TODO Settings For Memwor -->
+        <activity
+            android:name=".memwor.settings.Settings"
+            android:exported="false"></activity>
+
         <!--- TODO PumpWiMo -->
         <activity
             android:name=".pumpwimo.activities.SplashScreenActivity"

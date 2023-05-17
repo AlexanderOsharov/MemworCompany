@@ -1,7 +1,6 @@
-package com.shurik.memwor_24.memwor.content.artems_work.quest
+package com.shurik.memwor_24.memwor.content.logic.quest
 
 import io.reactivex.Single
-import retrofit2.Call
 import retrofit2.http.*
 
 

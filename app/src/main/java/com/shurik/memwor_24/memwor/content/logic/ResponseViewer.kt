@@ -1,20 +1,16 @@
-package com.shurik.memwor_24.memwor.content.artems_work
+package com.shurik.memwor_24.memwor.content.logic
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.google.gson.Gson
-import com.shurik.memwor_22.fragments.VkFragment
-import com.shurik.memwor_24.memwor.api.module_reddit.RedditAPI
-import com.shurik.memwor_24.memwor.content.artems_work.db.MemworDatabaseManager
+import com.shurik.memwor_24.memwor.fragments.VkFragment
+import com.shurik.memwor_24.memwor.content.logic.db.MemworDatabaseManager
 
-import com.shurik.memwor_24.memwor.content.artems_work.quest.GetVKJsonResponse
-import com.shurik.memwor_24.memwor.content.artems_work.quest.QuestApi
+import com.shurik.memwor_24.memwor.content.logic.quest.GetVKJsonResponse
+import com.shurik.memwor_24.memwor.content.logic.quest.QuestApi
 import com.shurik.memwor_24.memwor.content.Post
 import com.shurik.memwor_24.memwor.content.module_reddit.ChildData
-import com.shurik.memwor_24.memwor.content.module_reddit.RedditResponse
 import com.shurik.memwor_24.memwor.Constants
-import com.shurik.memwor_24.memwor.content.ItemAdapter
-import com.shurik.memwor_24.memwor.content.artems_work.quest.GetRedditJsonResponse
+import com.shurik.memwor_24.memwor.content.logic.quest.GetRedditJsonResponse
 import com.shurik.memwor_24.memwor.fragments.RedditFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -24,7 +20,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.IOException
 
 import kotlin.collections.ArrayList
 
@@ -125,7 +120,7 @@ class ResponseViewer (): ViewModel(){
                 }
             }?.awaitAll()
             Log.e("Retrofit await all","Success retrofit")
-            MemworViewModel.redditPostsLiveData.setValueToPosts(redditResList)
+//            MemworViewModel.redditPostsLiveData.setValueToPosts(redditResList)
         }
     }
 
@@ -177,6 +172,7 @@ class ResponseViewer (): ViewModel(){
                 post.images = inter_list
                 if(!post.images.isNullOrEmpty()){
                     vkResList.add(post)
+                    MemworViewModel.vkPostsLiveData.addPost(post)
                     if (vkResList.size % 10 == 0) {
 //                        VkFragment.adapter.addPosts(vkResList)
                         val DataPosts: MutableList<Post> = ArrayList()
@@ -211,6 +207,7 @@ class ResponseViewer (): ViewModel(){
 
             //if(!post.images.isNullOrEmpty()){
             redditResList.add(post)
+            MemworViewModel.redditPostsLiveData.addPost(post)
             Log.e("Reddit source: ", post.images.toString())
             if (redditResList.size % 10 == 0) {
 //                        RedditFragment.itemAdapter.addPosts(redditResList)

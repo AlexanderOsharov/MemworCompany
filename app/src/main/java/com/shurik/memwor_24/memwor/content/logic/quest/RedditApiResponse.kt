@@ -1,4 +1,4 @@
-package com.shurik.memwor_24.memwor.content.artems_work.quest
+package com.shurik.memwor_24.memwor.content.logic.quest
 
 data class GetRedditJsonResponse(val data: Data)
 data class Data(val children: List<Child>)

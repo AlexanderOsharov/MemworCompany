@@ -9,6 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#2B2B28</color>
     <color name="blue">#09001B</color>
+    <color name="dark_gray">#303030</color>
+    <color name="darker_gray">#1E1E1E</color>
+    <color name="light_gray">#B3B3B3</color>
     <color name="transparent">#002B2B28</color>
 
     <color name="switch_thumb_tint">#FF0000</color>
