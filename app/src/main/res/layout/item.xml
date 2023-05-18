@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="400dp"
     android:layout_height="wrap_content"
-    android:elevation="30dp"
     android:background="@color/dark_gray"
+    android:elevation="30dp"
     android:id="@+id/root">
 
     <androidx.cardview.widget.CardView
@@ -16,6 +15,13 @@
         app:cardCornerRadius="40dp"
         app:cardBackgroundColor="@color/darker_gray"
         android:id="@+id/cardView">
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -28,51 +34,62 @@
                 android:clipChildren="false"
                 android:layout_height="200dp"
                 android:layout_marginTop="6dp" />
+
             <ImageView
                 android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/gradient"/>
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient" />
+
             <TextView
+                android:id="@+id/categoryTextView"
                 android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TITLE"
-            android:padding="10dp"
-            android:textSize="20dp"
-            android:fontFamily="@font/g_bold"
-            android:textColor="@color/white"
-            android:id="@+id/categoryTextView"/>
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:orientation="horizontal">
+                android:fontFamily="@font/g_bold"
+                android:padding="10dp"
+                android:text="TITLE"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Author"
-                    android:textSize="16dp"
-                    android:ems="5"
-                    android:fontFamily="@font/g_light"
-                    android:textColor="@color/white"
-                    android:id="@+id/authorTextView"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/authorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="5"
+            android:fontFamily="@font/g_light"
+            android:text="Author"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </FrameLayout>
-        <TextView
-            android:id="@+id/textTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/blue_background"
-            android:fontFamily="@font/g_light"
-            android:padding="10dp"
-            android:text="There is no text for this post"
-            android:textColor="@color/white"
-            android:layout_marginTop="75dp"
-            android:maxLines="4"
-            android:ellipsize="end"
-            android:textSize="16sp"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/blue_background"
+    android:ellipsize="end"
+    android:fontFamily="@font/g_light"
+    android:maxHeight="20dp"
+    android:maxLines="4"
+    android:overScrollMode="never"
+    android:padding="10dp"
+    android:scrollbars="vertical"
+    android:text="There is no text for this post"
+    android:textColor="@color/white"
+    android:textSize="16sp" />
+</androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.cardview.widget.CardView>
-</LinearLayout>
+</RelativeLayout>
+
+
+

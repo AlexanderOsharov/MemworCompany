@@ -42,17 +42,17 @@ class MemworActivity : AppCompatActivity() {
     }
 
     private val fragList = listOf(
-        AllFragment.newInstance(),
+//        AllFragment.newInstance(),
         VkFragment.newInstance(),
 //        TelegramFragment.newInstance(),
-        RedditFragment.newInstance(),
+//        RedditFragment.newInstance(),
 //        InDevelopmentFragment.newInstance(),
     )
     private val fragListTitles = listOf(
         "All",
-        "Vk",
+//        "Vk",
 //        "Telegram",
-        "Reddit",
+//        "Reddit",
 //        "TikTok",
     )
 

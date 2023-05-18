@@ -12,6 +12,7 @@ import com.shurik.memwor_24.memwor.content.module_reddit.ChildData
 import com.shurik.memwor_24.memwor.Constants
 import com.shurik.memwor_24.memwor.content.logic.quest.GetRedditJsonResponse
 import com.shurik.memwor_24.memwor.fragments.RedditFragment
+import com.shurik.memwor_24.memwor.settings.Settings
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.*
@@ -29,6 +30,7 @@ class ResponseViewer (): ViewModel(){
     //TODO(IMPORT DOMAINS LIST FROM ACTIVITY)
     private val dbManager = MemworDatabaseManager()
     var vkResList: MutableList<Post> = ArrayList()
+    var vkCategoryList: MutableList<Post> = ArrayList()
     var redditResList: MutableList<Post> = ArrayList()
     //var tgDomainsList: MutableList<MutableList<String>> = ArrayList()
     //var redditDomainsList: MutableList<MutableList<String>> = ArrayList()
@@ -172,6 +174,22 @@ class ResponseViewer (): ViewModel(){
                 post.images = inter_list
                 if(!post.images.isNullOrEmpty()){
                     vkResList.add(post)
+//                    val categoriesList = context?.let { Constants.getCategories(it) }
+//                    if (post.category.contains("memes") && categoriesList?.get("memes") == true ||
+//                        post.category.contains("news") && categoriesList?.get("news") == true ||
+//                        post.category.contains("games") && categoriesList?.get("games") == true ||
+//                        post.category.contains("films") && categoriesList?.get("films") == true ||
+//                        post.category.contains("books") && categoriesList?.get("books") == true ||
+//                        post.category.contains("animals") && categoriesList?.get("animals") == true ||
+//                        post.category.contains("psychology") && categoriesList?.get("psychology") == true ||
+//                        post.category.contains("sciences") && categoriesList?.get("sciences") == true ||
+//                        post.category.contains("meal") && categoriesList?.get("meal") == true ||
+//                        post.category.contains("cartoons") && categoriesList?.get("cartoons") == true ||
+//                        post.category.contains("perfumery") && categoriesList?.get("perfumery") == true ||
+//                        post.category.contains("clothes") && categoriesList?.get("clothes") == true ||
+//                        post.category.contains("household items") && categoriesList?.get("householdItems") == true ||
+//                        post.category.contains("chancellery") && categoriesList?.get("chancellery") == true ||
+//                        post.category.contains("gardening") && categoriesList?.get("gardening") == true)
                     MemworViewModel.vkPostsLiveData.addPost(post)
                     if (vkResList.size % 10 == 0) {
 //                        VkFragment.adapter.addPosts(vkResList)
@@ -181,7 +199,7 @@ class ResponseViewer (): ViewModel(){
                             DataPosts.add(vkResList[i - 1])
                             i--
                         }
-                        VkFragment.adapter.addPosts(DataPosts)
+                        VkFragment.adapter?.addPosts(DataPosts)
                     }
                 }
 

@@ -8,6 +8,7 @@ import android.app.Dialog
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.text.method.ScrollingMovementMethod
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
@@ -74,6 +75,9 @@ class ItemAdapter(private var posts: MutableList<Post>) :
         holder.authorTextView.text = post.author
         holder.categoryTextView.text = post.category
         holder.textTextView.text = post.text
+
+        // Устанавливаем скролинг textTextView
+        holder.textTextView.movementMethod = ScrollingMovementMethod()
 
         // Устанавливаем видимость textTextView
         holder.textTextView.visibility = if (post.text.isNotEmpty()) View.VISIBLE else View.GONE

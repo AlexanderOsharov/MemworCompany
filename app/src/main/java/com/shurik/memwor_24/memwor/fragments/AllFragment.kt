@@ -114,9 +114,9 @@ class AllFragment : Fragment() {
                     if (post != null && (post.text.contains(query) || post.author.contains(query) || post.category.contains(query))) {
                         AnswerList.add(post)
                         if (AnswerList.size == 1) {
-                            VkFragment.adapter.updatePosts(AnswerList)
+                            VkFragment.adapter?.updatePosts(AnswerList)
                         } else {
-                            VkFragment.adapter.addPost(post)
+                            VkFragment.adapter?.addPost(post)
                         }
                     }
                     i--

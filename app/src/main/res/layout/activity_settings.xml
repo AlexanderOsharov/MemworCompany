@@ -5,112 +5,236 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:layout_width="350dp"
-    android:background="#00000000"
+    android:background="@color/dark_gray"
     android:layout_height="wrap_content"
     tools:context=".memwor.settings.Settings">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/cardView"
-        app:cardElevation="4dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="26dp"
-        tools:ignore="MissingConstraints">
-        <LinearLayout
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="vertical">
-
-            <Button
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="right"
-                android:stateListAnimator="@null"
-                android:background="@drawable/ic_close_black_24dp"
-                android:id="@+id/close_"/>
-
-            <TextView
+            android:id="@+id/cardView"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/dark_gray"
+            app:cardCornerRadius="26dp"
+            tools:ignore="MissingConstraints">
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginLeft="15dp"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:text="Settings"/>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="18dp"
                 android:padding="10dp"
-                android:text="Select the category by which your feeds will be built"/>
-            <CheckBox
-                android:id="@+id/school"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="School jokes" />
-            <CheckBox
-                android:id="@+id/technology"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="The world of technology" />
-            <CheckBox
-                android:id="@+id/journeys"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Journeys" />
+                android:orientation="vertical">
 
-        </LinearLayout>
+<!--                <Button-->
+<!--                    android:layout_width="24dp"-->
+<!--                    android:layout_height="24dp"-->
+<!--                    android:layout_gravity="right"-->
+<!--                    android:stateListAnimator="@null"-->
+<!--                    android:background="@drawable/ic_close_black_24dp"-->
+<!--                    android:id="@+id/close_"/>-->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Settings"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Select the category by which your feeds will be built"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <CheckBox
+                            android:id="@+id/memes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:textColor="@android:color/white"
+                            android:checked="true"
+                            android:text="Memes" />
+                        <CheckBox
+                            android:id="@+id/news"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:textColor="@android:color/white"
+                            android:checked="true"
+                            android:text="News" />
+                        <CheckBox
+                            android:id="@+id/games"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:textColor="@android:color/white"
+                            android:checked="true"
+                            android:text="Games" />
+                        <CheckBox
+                            android:id="@+id/films"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:textColor="@android:color/white"
+                            android:checked="true"
+                            android:text="Films" />
+                        <CheckBox
+                            android:id="@+id/meal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:textColor="@android:color/white"
+                            android:checked="true"
+                            android:text="Meal" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:enabled="true"
+                        android:orientation="vertical">
+                        <CheckBox
+                            android:id="@+id/books"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:textColor="@android:color/white"
+                            android:checked="true"
+                            android:text="Books" />
+                        <CheckBox
+                            android:id="@+id/animals"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:textColor="@android:color/white"
+                            android:checked="true"
+                            android:text="Animals" />
+                        <CheckBox
+                            android:id="@+id/gardening"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:textColor="@android:color/white"
+                            android:checked="true"
+                            android:text="Gardening" />
+                        <CheckBox
+                            android:id="@+id/psychology"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:textColor="@android:color/white"
+                            android:checked="true"
+                            android:text="Psychology" />
+                        <CheckBox
+                            android:id="@+id/sciences"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:textColor="@android:color/white"
+                            android:checked="true"
+                            android:text="Sciences" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/cartoons"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:textColor="@android:color/white"
+                            android:checked="true"
+                            android:text="Cartoons" />
+                        <CheckBox
+                            android:id="@+id/perfumery"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:textColor="@android:color/white"
+                            android:checked="true"
+                            android:text="Perfumery" />
+                        <CheckBox
+                            android:id="@+id/clothes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:textColor="@android:color/white"
+                            android:checked="true"
+                            android:text="Clothes" />
+                        <CheckBox
+                            android:id="@+id/household_items"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:textColor="@android:color/white"
+                            android:checked="true"
+                            android:text="Household items" />
+                        <CheckBox
+                            android:id="@+id/chancellery"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@color/white"
+                            android:textColor="@android:color/white"
+                            android:checked="true"
+                            android:text="Chancellery" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </LinearLayout>
 
 
 
 
-    </androidx.cardview.widget.CardView>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_dialog_map"
-        app:backgroundTint="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.cardview.widget.CardView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@android:drawable/ic_dialog_map"
+            app:backgroundTint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/tape"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_dialog_info"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@id/fab"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/tape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@android:drawable/ic_dialog_info"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/fab"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/database"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:src="@android:drawable/ic_dialog_email"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@id/tape"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/database"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@android:drawable/ic_dialog_email"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/tape"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/browser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:src="@drawable/browser_logo"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@id/database"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/browser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/browser_logo"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/database"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

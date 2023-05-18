@@ -73,7 +73,7 @@ class NewPlatformActivity : AppCompatActivity() {
 
         val addButton: Button = findViewById(R.id.addBtn)
         addButton.setOnClickListener {
-            addDBCommunity()
+//            addDBCommunity()
         }
 
     }

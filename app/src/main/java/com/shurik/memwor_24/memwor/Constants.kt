@@ -1,5 +1,9 @@
 package com.shurik.memwor_24.memwor
 
+import android.content.Context
+import com.shurik.memwor_24.memwor.settings.Settings
+import kotlinx.coroutines.withContext
+
 class Constants {
 
     companion object {
@@ -26,6 +30,28 @@ class Constants {
             "chancellery",
             "gardening"
         )
+
+        fun getCategories(context: Context): MutableMap<String, Boolean> {
+            val sharedPreferences = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            val categoriesList = mapOf<String, Boolean>().toMutableMap()
+
+            categoriesList["memes"] = sharedPreferences.getBoolean("memes", true)
+            categoriesList["news"] = sharedPreferences.getBoolean("news", true)
+            categoriesList["games"] = sharedPreferences.getBoolean("games", true)
+            categoriesList["films"] = sharedPreferences.getBoolean("films", true)
+            categoriesList["meal"] = sharedPreferences.getBoolean("meal", true)
+            categoriesList["books"] = sharedPreferences.getBoolean("books", true)
+            categoriesList["animals"] = sharedPreferences.getBoolean("animals", true)
+            categoriesList["gardening"] = sharedPreferences.getBoolean("gardening", true)
+            categoriesList["psychology"] = sharedPreferences.getBoolean("psychology", true)
+            categoriesList["sciences"] = sharedPreferences.getBoolean("sciences", true)
+            categoriesList["cartoons"] = sharedPreferences.getBoolean("cartoons", true)
+            categoriesList["perfumery"] = sharedPreferences.getBoolean("perfumery", true)
+            categoriesList["clothes"] = sharedPreferences.getBoolean("clothes", true)
+            categoriesList["householdItems"] = sharedPreferences.getBoolean("householdItems", true)
+            categoriesList["chancellery"] = sharedPreferences.getBoolean("chancellery", true)
+            return categoriesList
+        }
     }
 }
 

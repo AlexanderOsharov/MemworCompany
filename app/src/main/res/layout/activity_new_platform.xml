@@ -107,7 +107,7 @@
     android:backgroundTint="@color/colorAccent"
     android:onClick="add_db_community"
     android:text="Add to db"
-    android:textColor="@android:color/white"
+    android:textColor="@android:color/black"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/editCategoryLayout" />

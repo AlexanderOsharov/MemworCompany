@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/g_bold"
             android:gravity="center"
-            android:text="Vk"
+            android:text="All"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:background="@color/darker_gray"

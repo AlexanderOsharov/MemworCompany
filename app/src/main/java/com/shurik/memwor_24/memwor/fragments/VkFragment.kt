@@ -6,6 +6,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,8 +21,10 @@ import com.shurik.memwor_24.memwor.content.logic.Domain
 import com.shurik.memwor_24.memwor.content.logic.MemworViewModel
 import com.shurik.memwor_24.memwor.content.logic.ResponseViewer
 import com.shurik.memwor_24.databinding.FragmentVkBinding
+import com.shurik.memwor_24.memwor.Constants
 import com.shurik.memwor_24.memwor.content.ItemAdapter
 import com.shurik.memwor_24.memwor.content.Post
+import com.shurik.memwor_24.memwor.settings.Settings
 
 class VkFragment : Fragment() {
 
@@ -71,8 +74,15 @@ class VkFragment : Fragment() {
 
         swipeRefreshLayout?.setOnRefreshListener {
 //            vkViewer.getVkInfo()
+            //Toast.makeText(activity, "Запрос к функции", Toast.LENGTH_SHORT)
             val newContentInfo = getRandomContent()
-            if (newContentInfo != null) adapter.updatePosts(newContentInfo as MutableList<Post>)
+            if ((newContentInfo != null) && newContentInfo.isNotEmpty()) adapter.updatePosts(newContentInfo as MutableList<Post>)
+            else {
+                val toast = Toast.makeText(activity, "Сервер перегружен, \nвыберите другую категорию", Toast.LENGTH_LONG)
+                toast.setGravity(Gravity.CENTER, 0, 0)
+                toast.show()
+            }
+            //Toast.makeText(activity, "Условия пройдены", Toast.LENGTH_SHORT)
             swipeRefreshLayout?.isRefreshing = false
         }
         //Какая-нибудь заглушка
@@ -135,13 +145,44 @@ class VkFragment : Fragment() {
 
     fun getRandomContent(): List<Post>? {
         val vkContentList = MemworViewModel.vkPostsLiveData.value
+
         if (!vkContentList.isNullOrEmpty()) {
+//            val shuffledList = vkContentList.shuffled()
+//            if (shuffledList.size >= 10) {
+//                return shuffledList.subList(0, 10)
+//            } else {
+//                return shuffledList.subList(0, shuffledList.size)
+//            }
+//            Toast.makeText(activity, "Он зашел в функцию", Toast.LENGTH_SHORT)
+
             val shuffledList = vkContentList.shuffled()
-            if (shuffledList.size >= 10) {
-                return shuffledList.subList(0, 10)
-            } else {
-                return shuffledList.subList(0, shuffledList.size)
+            val categoriesList = context?.let { Constants.getCategories(it) }
+            val reslist = ArrayList<Post>()
+            var i: Int = shuffledList.size - 1
+            while (reslist.size != 10 && i > -1){
+                if (shuffledList[i].category.contains("memes") && categoriesList?.get("memes") == true ||
+                    shuffledList[i].category.contains("news") && categoriesList?.get("news") == true ||
+                    shuffledList[i].category.contains("games") && categoriesList?.get("games") == true ||
+                    shuffledList[i].category.contains("films") && categoriesList?.get("films") == true ||
+                    shuffledList[i].category.contains("meal") && categoriesList?.get("meal") == true ||
+                    shuffledList[i].category.contains("books") && categoriesList?.get("books") == true ||
+                    shuffledList[i].category.contains("animals") && categoriesList?.get("animals") == true ||
+                    shuffledList[i].category.contains("psychology") && categoriesList?.get("psychology") == true ||
+                    shuffledList[i].category.contains("sciences") && categoriesList?.get("sciences") == true ||
+                    shuffledList[i].category.contains("cartoons") && categoriesList?.get("cartoons") == true ||
+                    shuffledList[i].category.contains("perfumery") && categoriesList?.get("perfumery") == true ||
+                    shuffledList[i].category.contains("clothes") && categoriesList?.get("clothes") == true ||
+                    shuffledList[i].category.contains("household items") && categoriesList?.get("householdItems") == true ||
+                    shuffledList[i].category.contains("chancellery") && categoriesList?.get("chancellery") == true ||
+                    shuffledList[i].category.contains("gardening") && categoriesList?.get("gardening") == true) {
+                    reslist.add(shuffledList[i])
+                }
+                i--
             }
+            Toast.makeText(activity, "Он прошел цикл", Toast.LENGTH_SHORT)
+            Toast.makeText(activity, "Размер листа = ${reslist.size}", Toast.LENGTH_SHORT)
+            if (reslist.size == 0) return null
+            return reslist
         }
         return null
     }
