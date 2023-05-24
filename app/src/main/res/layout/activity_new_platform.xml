@@ -8,11 +8,38 @@
     tools:context=".memwor.content.new_platform.NewPlatformActivity">
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTitleNewPlatform"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="32dp"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:boxStrokeColor="@android:color/white"
+        app:hintTextColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/titleNewPlatform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Внесите свой вклад в разработку Memwor\n
+путем добавления открытого собщества в базу\n
+данных и заполнения информации о нем"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editPlatformLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="32dp"
         app:boxBackgroundColor="@android:color/transparent"
         app:boxStrokeColor="@android:color/white"
@@ -25,8 +52,8 @@
             android:id="@+id/editPlatformText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="platform(vk, reddit, tg)"
-            android:textColor="@android:color/white"
+            android:hint="Платформа(vk, reddit, telegram, tiktok)"
+            android:textColor="@android:color/black"
             android:textColorHint="@android:color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -35,7 +62,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="236dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="32dp"
         app:boxBackgroundColor="@android:color/transparent"
         app:boxStrokeColor="@android:color/white"
@@ -48,8 +75,8 @@
             android:id="@+id/editDomainText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="domain"
-            android:textColor="@android:color/white"
+            android:hint="Домейн"
+            android:textColor="@android:color/black"
             android:textColorHint="@android:color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,7 +85,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="336dp"
+        android:layout_marginTop="300dp"
         android:layout_marginEnd="32dp"
         app:boxBackgroundColor="@android:color/transparent"
         app:boxStrokeColor="@android:color/white"
@@ -71,17 +98,16 @@
             android:id="@+id/editNameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="name"
-            android:textColor="@android:color/white"
+            android:hint="Название сообщества"
+            android:textColor="@android:color/black"
             android:textColorHint="@android:color/white" />
     </com.google.android.material.textfield.TextInputLayout>
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editCategoryLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="436dp"
+        android:layout_marginTop="380dp"
         android:layout_marginEnd="32dp"
         app:boxBackgroundColor="@android:color/transparent"
         app:boxStrokeColor="@android:color/white"
@@ -90,14 +116,182 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <TextView
             android:id="@+id/editCategoryText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="category"
+            android:textStyle="bold"
+            android:hint="Выберите категорию"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white" />
     </com.google.android.material.textfield.TextInputLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginEnd="32dp"
+        app:boxBackgroundColor="@android:color/transparent"
+        app:boxStrokeColor="@android:color/white"
+        app:hintTextColor="@android:color/white"
+        android:background="@color/transparent"
+        android:backgroundTint="@color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/cardView"
+        tools:ignore="MissingConstraints">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <CheckBox
+                android:id="@+id/memes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:textColor="@android:color/white"
+                android:checked="false"
+                android:text="Мемы" />
+            <CheckBox
+                android:id="@+id/news"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:textColor="@android:color/white"
+                android:checked="false"
+                android:text="Новости" />
+            <CheckBox
+                android:id="@+id/games"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:textColor="@android:color/white"
+                android:checked="false"
+                android:text="Игры" />
+            <CheckBox
+                android:id="@+id/films"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:textColor="@android:color/white"
+                android:checked="false"
+                android:text="Фильмы" />
+            <CheckBox
+                android:id="@+id/meal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:textColor="@android:color/white"
+                android:checked="false"
+                android:text="Еда" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:enabled="true"
+            android:orientation="vertical">
+            <CheckBox
+                android:id="@+id/books"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:textColor="@android:color/white"
+                android:checked="false"
+                android:text="Книги" />
+            <CheckBox
+                android:id="@+id/animals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:textColor="@android:color/white"
+                android:checked="false"
+                android:text="Животные" />
+            <CheckBox
+                android:id="@+id/gardening"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:textColor="@android:color/white"
+                android:checked="false"
+                android:text="Садоводство" />
+            <CheckBox
+                android:id="@+id/psychology"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:textColor="@android:color/white"
+                android:checked="false"
+                android:text="Психология" />
+            <CheckBox
+                android:id="@+id/sciences"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:textColor="@android:color/white"
+                android:checked="false"
+                android:text="Науки" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/cartoons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:textColor="@android:color/white"
+                android:checked="false"
+                android:text="Мультфильмы" />
+            <CheckBox
+                android:id="@+id/perfumery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:textColor="@android:color/white"
+                android:checked="false"
+                android:text="Парфюмерия" />
+            <CheckBox
+                android:id="@+id/clothes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:textColor="@android:color/white"
+                android:checked="false"
+                android:text="Одежда" />
+            <CheckBox
+                android:id="@+id/household_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:textColor="@android:color/white"
+                android:checked="false"
+                android:text="Хозяйственные вещи" />
+            <CheckBox
+                android:id="@+id/chancellery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/white"
+                android:textColor="@android:color/white"
+                android:checked="false"
+                android:text="Канцелярия" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/addBtn"
@@ -110,7 +304,7 @@
     android:textColor="@android:color/black"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/editCategoryLayout" />
+    app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -127,7 +321,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:src="@android:drawable/ic_dialog_map"
+        android:src="@android:drawable/ic_dialog_info"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/fab"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -137,7 +331,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:src="@android:drawable/ic_dialog_info"
+        android:src="@android:drawable/ic_dialog_map"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/tape"
         app:layout_constraintEnd_toEndOf="parent" />

@@ -15,79 +15,85 @@
         app:cardCornerRadius="40dp"
         app:cardBackgroundColor="@color/darker_gray"
         android:id="@+id/cardView">
-<androidx.appcompat.widget.LinearLayoutCompat
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <FrameLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:padding="10dp">
-
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/mediaViewPager"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:clipChildren="false"
-                android:layout_height="200dp"
-                android:layout_marginTop="6dp" />
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/gradient" />
+                <FrameLayout
+                    android:id="@+id/mediaFrameLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:padding="10dp">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/mediaViewPager"
+                        android:layout_width="match_parent"
+                        android:clipChildren="false"
+                        android:layout_height="200dp"
+                        android:layout_marginTop="6dp" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/gradient"
+                        android:id="@+id/gradientImageView"/>
+
+                    <TextView
+                        android:id="@+id/categoryTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/authorTextView"
+                        android:layout_alignTop="@id/authorTextView"
+                        android:fontFamily="@font/g_bold"
+                        android:padding="10dp"
+                        android:text="TITLE"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/authorTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="5"
+                    android:fontFamily="@font/g_light"
+                    android:text="Author"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </FrameLayout>
+
+            </RelativeLayout>
 
             <TextView
-                android:id="@+id/categoryTextView"
-                android:layout_width="wrap_content"
+                android:id="@+id/textTextView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/g_bold"
+                android:layout_below="@id/categoryTextView"
+                android:layout_alignTop="@id/categoryTextView"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/blue_background"
+                android:ellipsize="end"
+                android:fontFamily="@font/g_light"
+                android:maxHeight="20dp"
+                android:maxLines="4"
+                android:overScrollMode="never"
                 android:padding="10dp"
-                android:text="TITLE"
+                android:scrollbars="vertical"
+                android:text="There is no text for this post"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/authorTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="5"
-            android:fontFamily="@font/g_light"
-            android:text="Author"
-            android:textColor="@color/white"
-            android:textSize="16dp" />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </FrameLayout>
-
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/textTextView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:background="@drawable/blue_background"
-    android:ellipsize="end"
-    android:fontFamily="@font/g_light"
-    android:maxHeight="20dp"
-    android:maxLines="4"
-    android:overScrollMode="never"
-    android:padding="10dp"
-    android:scrollbars="vertical"
-    android:text="There is no text for this post"
-    android:textColor="@color/white"
-    android:textSize="16sp" />
-</androidx.appcompat.widget.LinearLayoutCompat>
+                android:textSize="16sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
 

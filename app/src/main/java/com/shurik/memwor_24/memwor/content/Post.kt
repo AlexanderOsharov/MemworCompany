@@ -1,6 +1,6 @@
 package com.shurik.memwor_24.memwor.content
 
-class Post {
+class Post() {
     var text: String = ""
     var images: MutableList<String> = mutableListOf()
     var videos: MutableList<String> = mutableListOf()

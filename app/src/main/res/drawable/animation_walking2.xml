@@ -1,0 +1,11 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/walking2_frame1" android:duration="250" />
+    <item android:drawable="@drawable/walking2_frame2" android:duration="250" />
+    <item android:drawable="@drawable/walking2_frame3" android:duration="250" />
+    <item android:drawable="@drawable/walking2_frame4" android:duration="250" />
+    <item android:drawable="@drawable/walking2_frame5" android:duration="250" />
+    <item android:drawable="@drawable/walking2_frame6" android:duration="250" />
+    <item android:drawable="@drawable/walking2_frame7" android:duration="250" />
+    <item android:drawable="@drawable/walking2_frame8" android:duration="250" />
+    <item android:drawable="@drawable/walking2_frame9" android:duration="250" />
+</animation-list>

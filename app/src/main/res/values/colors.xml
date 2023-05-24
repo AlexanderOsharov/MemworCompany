@@ -20,6 +20,9 @@
     <color name="myToggleTrackColor">#B3FFFFFF</color>
     <color name="your_sparkling_color">#FFC0CB</color>
 
+    <color name="primaryColor">#212121</color>
+    <color name="secondaryColor">#424242</color>
+
     // основные цвета PumpWiMo
     <color name="colorWhite">#FFFFFFFF</color>
     <color name="main_3">#FB710E</color>

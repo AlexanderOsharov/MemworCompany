@@ -39,6 +39,9 @@ class RedditFragment : Fragment() {
     var swipeRefreshLayout: SwipeRefreshLayout? = null
     var etQuery: EditText? = null
     var btnSearch: Button? = null
+
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
+
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,7 +62,7 @@ class RedditFragment : Fragment() {
 
         swipeRefreshLayout?.setOnRefreshListener {
             val newContentInfo = getRandomContent()
-            if (newContentInfo != null) itemAdapter.updatePosts(newContentInfo as MutableList<Post>)
+            if (newContentInfo != null) coroutineScope.launch { itemAdapter.updatePosts(newContentInfo as MutableList<Post>) }
             swipeRefreshLayout?.isRefreshing = false
         }
 
@@ -161,9 +164,9 @@ class RedditFragment : Fragment() {
                     if (post != null && (post.text.contains(query) || post.author.contains(query) || post.category.contains(query))) {
                         redditAnswerList.add(post)
                         if (redditAnswerList.size == 1) {
-                            itemAdapter.updatePosts(redditAnswerList)
+                            coroutineScope.launch { itemAdapter.updatePosts(redditAnswerList) }
                         } else {
-                            itemAdapter.addPost(post)
+                            coroutineScope.launch{ itemAdapter.addPost(post)}
                         }
                     }
                     i--

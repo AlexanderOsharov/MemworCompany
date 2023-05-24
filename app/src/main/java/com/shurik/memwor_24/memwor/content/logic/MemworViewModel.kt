@@ -7,5 +7,8 @@ class MemworViewModel {
 
         var redditPostsLiveData = PostLiveData()
         var redditDomainsLiveData = DomainsLiveData()
+
+        var telegramPostsLiveData = PostLiveData()
+        var telegramDomainsLiveData = DomainsLiveData()
     }
 }

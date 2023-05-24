@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_gravity="center"
-    android:layout_width="350dp"
+    android:layout_width="match_parent"
     android:background="@color/dark_gray"
     android:layout_height="wrap_content"
+    android:id="@+id/constraint"
     tools:context=".memwor.settings.Settings">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/cardView"
             app:cardElevation="4dp"
             app:cardBackgroundColor="@color/dark_gray"
@@ -36,7 +37,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Settings"
+                    android:text="Настройки"
                     android:textColor="@android:color/white"
                     android:textSize="24sp" />
 
@@ -44,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Select the category by which your feeds will be built"
+                    android:text="Выберите категории, на основе которых будет создаваться ваша лента"
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -62,7 +63,7 @@
                             android:buttonTint="@color/white"
                             android:textColor="@android:color/white"
                             android:checked="true"
-                            android:text="Memes" />
+                            android:text="Мемы" />
                         <CheckBox
                             android:id="@+id/news"
                             android:layout_width="match_parent"
@@ -70,7 +71,7 @@
                             android:buttonTint="@color/white"
                             android:textColor="@android:color/white"
                             android:checked="true"
-                            android:text="News" />
+                            android:text="Новости" />
                         <CheckBox
                             android:id="@+id/games"
                             android:layout_width="match_parent"
@@ -78,7 +79,7 @@
                             android:buttonTint="@color/white"
                             android:textColor="@android:color/white"
                             android:checked="true"
-                            android:text="Games" />
+                            android:text="Игры" />
                         <CheckBox
                             android:id="@+id/films"
                             android:layout_width="match_parent"
@@ -86,7 +87,7 @@
                             android:buttonTint="@color/white"
                             android:textColor="@android:color/white"
                             android:checked="true"
-                            android:text="Films" />
+                            android:text="Фильмы" />
                         <CheckBox
                             android:id="@+id/meal"
                             android:layout_width="match_parent"
@@ -94,7 +95,7 @@
                             android:buttonTint="@color/white"
                             android:textColor="@android:color/white"
                             android:checked="true"
-                            android:text="Meal" />
+                            android:text="Еда" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
@@ -108,7 +109,7 @@
                             android:buttonTint="@color/white"
                             android:textColor="@android:color/white"
                             android:checked="true"
-                            android:text="Books" />
+                            android:text="Книги" />
                         <CheckBox
                             android:id="@+id/animals"
                             android:layout_width="match_parent"
@@ -116,7 +117,7 @@
                             android:buttonTint="@color/white"
                             android:textColor="@android:color/white"
                             android:checked="true"
-                            android:text="Animals" />
+                            android:text="Животные" />
                         <CheckBox
                             android:id="@+id/gardening"
                             android:layout_width="match_parent"
@@ -124,7 +125,7 @@
                             android:buttonTint="@color/white"
                             android:textColor="@android:color/white"
                             android:checked="true"
-                            android:text="Gardening" />
+                            android:text="Садоводство" />
                         <CheckBox
                             android:id="@+id/psychology"
                             android:layout_width="match_parent"
@@ -132,7 +133,7 @@
                             android:buttonTint="@color/white"
                             android:textColor="@android:color/white"
                             android:checked="true"
-                            android:text="Psychology" />
+                            android:text="Психология" />
                         <CheckBox
                             android:id="@+id/sciences"
                             android:layout_width="match_parent"
@@ -140,7 +141,7 @@
                             android:buttonTint="@color/white"
                             android:textColor="@android:color/white"
                             android:checked="true"
-                            android:text="Sciences" />
+                            android:text="Науки" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
@@ -154,7 +155,7 @@
                             android:buttonTint="@color/white"
                             android:textColor="@android:color/white"
                             android:checked="true"
-                            android:text="Cartoons" />
+                            android:text="Мультфильмы" />
                         <CheckBox
                             android:id="@+id/perfumery"
                             android:layout_width="match_parent"
@@ -162,7 +163,7 @@
                             android:buttonTint="@color/white"
                             android:textColor="@android:color/white"
                             android:checked="true"
-                            android:text="Perfumery" />
+                            android:text="Парфюмерия" />
                         <CheckBox
                             android:id="@+id/clothes"
                             android:layout_width="match_parent"
@@ -170,7 +171,7 @@
                             android:buttonTint="@color/white"
                             android:textColor="@android:color/white"
                             android:checked="true"
-                            android:text="Clothes" />
+                            android:text="Одежда" />
                         <CheckBox
                             android:id="@+id/household_items"
                             android:layout_width="match_parent"
@@ -178,7 +179,7 @@
                             android:buttonTint="@color/white"
                             android:textColor="@android:color/white"
                             android:checked="true"
-                            android:text="Household items" />
+                            android:text="Хозяйственные вещи" />
                         <CheckBox
                             android:id="@+id/chancellery"
                             android:layout_width="match_parent"
@@ -186,16 +187,59 @@
                             android:buttonTint="@color/white"
                             android:textColor="@android:color/white"
                             android:checked="true"
-                            android:text="Chancellery" />
+                            android:text="Канцелярия" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
+                <FrameLayout
+                    android:id="@+id/settings_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <!-- вложенные view в FrameLayout, например, ImageView -->
+
+                </FrameLayout>
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:ignore="NotSibling">
+
+                    <ImageView
+                        android:id="@+id/gear1"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/gear1_image"
+                        android:layout_marginEnd="-35dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintVertical_bias="0.5" />
+
+                    <ImageView
+                        android:id="@+id/gear2"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/gear2_image"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintVertical_bias="0.5" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
             </LinearLayout>
 
-
-
-
         </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:src="@drawable/off"
+            app:backgroundTint="@color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
@@ -235,6 +279,20 @@
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@id/database"
             app:layout_constraintEnd_toEndOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-</LinearLayout>
+    <ImageView
+        android:id="@+id/walkingMan"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/animation_walking"
+        tools:ignore="MissingConstraints" />
+    <ImageView
+        android:id="@+id/walking2Man"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/animation_walking2"
+        tools:ignore="MissingConstraints" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

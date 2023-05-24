@@ -14,6 +14,9 @@ import com.shurik.memwor_24.memwor.Constants
 import com.shurik.memwor_24.R
 import com.shurik.memwor_24.memwor.content.ItemAdapter
 import com.shurik.memwor_24.memwor.content.Post
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 class TikTokFragment : Fragment() {
@@ -23,6 +26,8 @@ class TikTokFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var itemAdapter: ItemAdapter
     private var contents: MutableList<Post> = ArrayList()
+
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_tik_tok, container, false)
@@ -46,7 +51,7 @@ class TikTokFragment : Fragment() {
             { response ->
                 val post = parsePostFromResponse(response, domain)
                 contents.add(post)
-                itemAdapter.updatePosts(contents)
+                coroutineScope.launch { itemAdapter.updatePosts(contents) }
             },
             { error ->
                 error.printStackTrace()

@@ -1,0 +1,6 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/dancing_frame1" android:duration="500" />
+    <item android:drawable="@drawable/dancing_frame2" android:duration="500" />
+    <item android:drawable="@drawable/dancing_frame3" android:duration="500" />
+    <item android:drawable="@drawable/dancing_frame4" android:duration="500" />
+</animation-list>

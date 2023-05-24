@@ -71,4 +71,9 @@
     <string name="pizzaplanet">PizzaPlanet</string>
 
     // }
+
+    // Memwor {
+    <string name="default_start_activity">memwor_activity</string>
+
+    // }
 </resources>

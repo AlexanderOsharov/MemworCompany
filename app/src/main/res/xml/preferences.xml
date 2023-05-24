@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:titleTextColor="@android:color/white"
+    >
+    <ListPreference
+        android:key="start_activity_preference"
+        android:title="Выберите стартовую активность"
+        android:defaultValue="@string/default_start_activity"
+        android:entries="@array/start_activity_options"
+        android:entryValues="@array/start_activity_values"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:titleTextColor="@android:color/white" />
+</PreferenceScreen>
+
+

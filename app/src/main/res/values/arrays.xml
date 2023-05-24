@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="start_activity_options">
+        <item>Анонимный режим</item>
+        <item>Режим зарегистрированного пользователя</item>
+    </string-array>
+    <string-array name="start_activity_values">
+    <item>memwor_activity</item>
+    <item>browser_activity</item>
+</string-array>
+</resources>
